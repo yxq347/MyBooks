@@ -1,0 +1,431 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<!-- Start book MyBook -->
+<!-- Start book MyBook -->
+
+<head>
+    <!-- head:start -->
+<!-- head:start -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>8.配置binlog-server备份服务器 | MyBook</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="description" content="">
+    <meta name="generator" content="GitBook 1.2.27">  
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/styles.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-theme-comscore/test.css">
+        
+    
+    
+ 
+    
+    
+    <link rel="next" href="../Mha-Atlas-MySQL/9.mysql中间件Atlas.html" />
+    
+    
+    <link rel="prev" href="../Mha-Atlas-MySQL/7.配置VIP漂移.html" />
+    
+ <script src='//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js'></script>
+<!-- head:end -->
+<!-- head:end -->
+    
+    <style>
+        .articles{
+            display: none;
+        }
+        .active>.articles{
+            display: block;
+        }
+    </style>
+    
+</head>
+
+<body class="theme-green">
+    <div class="header">
+        <a aria-label="Table of Contents" class="btn-toggle-summary" href="#">
+            <i class="fa fa-align-justify"></i>
+        </a>
+        <a class="logo">MyBook</a>
+        <ul class="nav">
+            
+        </ul>
+    </div>
+    <!-- body:start -->
+<!-- body:start --> 
+    <div class="book"
+        data-level="1.8"
+        data-chapter-title="8.配置binlog-server备份服务器"
+        data-filepath="Mha-Atlas-MySQL/8.配置binlog-server备份服务器.md"
+        data-basepath=".."
+        data-revision="Tue Mar 05 2019 15:49:20 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        MyBook
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Mha-Atlas-MySQL/0.readme.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/0.readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Mha-Atlas-MySQL高可用方案实践
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="Mha-Atlas-MySQL/1.mysql-mha环境准备.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/1.mysql-mha环境准备.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1.mysql-mha环境准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Mha-Atlas-MySQL/2.mha简介.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/2.mha简介.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        2.mha简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Mha-Atlas-MySQL/3.mysql环境准备.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/3.mysql环境准备.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        3.mysql环境准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        4.配置基于GTID的主从复制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Mha-Atlas-MySQL/5.部署MHA.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/5.部署MHA.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        5.部署MHA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Mha-Atlas-MySQL/6.MHA参数验证实践.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/6.MHA参数验证实践.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        6.MHA参数验证实践
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Mha-Atlas-MySQL/7.配置VIP漂移.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/7.配置VIP漂移.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        7.配置VIP漂移
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8" data-path="Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        8.配置binlog-server备份服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="Mha-Atlas-MySQL/9.mysql中间件Atlas.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/9.mysql中间件Atlas.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                        9.mysql中间件Atlas
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >MyBook</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="8&#x914D;&#x7F6E;binlog-server&#x5907;&#x4EFD;&#x670D;&#x52A1;&#x5668;">8.&#x914D;&#x7F6E;binlog-server&#x5907;&#x4EFD;&#x670D;&#x52A1;&#x5668;</h1>
+<blockquote>
+<p>&#x4E3B;&#x5E93;&#x5B95;&#x673A;&#xFF0C;&#x4E5F;&#x8BB8;&#x4F1A;&#x9020;&#x6210;&#x4E3B;&#x5E93;binlog&#x590D;&#x5236;&#x4E0D;&#x53CA;&#x65F6;&#x800C;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x4E22;&#x5931;&#x7684;&#x60C5;&#x51B5;&#x51FA;&#x73B0;&#xFF0C;&#x56E0;&#x6B64;&#x914D;&#x7F6E;binlog-server&#x8FDB;&#x884C;&#x65F6;&#x65F6;&#x540C;&#x6B65;&#x5907;&#x4EFD;&#xFF0C;&#x662F;&#x5FC5;&#x8981;&#x7684;&#x4E00;&#x79CD;&#x5B89;&#x5168;&#x624B;&#x6BB5;&#x3002;</p>
+</blockquote>
+<h2 id="81-&#x4FEE;&#x6539;mha&#x914D;&#x7F6E;&#x6587;&#x4EF6;">8.1 &#x4FEE;&#x6539;mha&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h2>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# cat /etc/mha/mha1.cnf
+[server default]
+manager_log=/var/log/mha/mha1/manager
+manager_workdir=/var/log/mha/mha1
+master_binlog_dir=/usr/local/mysql/data    #&#x5168;&#x5C40;&#x7684;binlog&#x5B58;&#x653E;&#x4F4D;&#x7F6E;
+master_ip_failover_script=/usr/local/bin/master_ip_failover
+password=123123
+ping_interval=2
+repl_password=123123
+repl_user=rep
+ssh_user=root
+user=mha
+
+[server1]
+hostname=192.168.0.51
+port=3306
+
+[server2]
+hostname=192.168.0.52
+port=3306
+
+[server3]
+hostname=192.168.0.53
+port=3306
+
+[binlog1] #&#x6DFB;&#x52A0;binlog&#x6A21;&#x5757;
+no_master=1 #&#x4E0D;&#x5141;&#x8BB8;&#x5207;&#x6362;&#x4E3A;&#x4E3B;
+hostname=192.168.0.53 #&#x5B58;&#x653E;IP
+master_binlog_dir=/data/mysql/binlog/ #binlog&#x5B58;&#x653E;&#x4F4D;&#x7F6E;&#x4F18;&#x5148;&#x7EA7;&#x6BD4;&#x5168;&#x5C40;&#x7684;&#x9AD8;
+</code></pre>
+<h2 id="82--&#x62C9;&#x53D6;&#x4E3B;&#x5E93;&#x4E0A;&#x7684;binlog&#x65E5;&#x5FD7;&#x5230;mysql-db03&#x7684;&#x5B58;&#x653E;&#x76EE;&#x5F55;&#x91CC;">8.2  &#x62C9;&#x53D6;&#x4E3B;&#x5E93;&#x4E0A;&#x7684;binlog&#x65E5;&#x5FD7;&#x5230;mysql-db03&#x7684;&#x5B58;&#x653E;&#x76EE;&#x5F55;&#x91CC;</h2>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# mkdir -p /data/mysql/binlog #&#x521B;&#x5EFA;&#x5B58;&#x653E;&#x76EE;&#x5F55;
+[root@mysql-db03 ~]# cd /data/mysql/binlog/ #&#x8FDB;&#x5165;&#x5B58;&#x653E;&#x76EE;&#x5F55;
+[root@mysql-db03 binlog]# lltotal 0
+[root@mysql-db03 binlog]# which mysqlbinlog
+/usr/local/bin/mysqlbinlog
+[root@mysql-db03 binlog]# mysqlbinlog -R --host=192.168.0.52 --user=mha --password=123123 --raw --stop-never mysql-bin.000001 &amp;   #&#x62C9;&#x53D6;&#x4E3B;&#x5E93;binlog
+[2] 15694
+[root@mysql-db03 binlog]# Warning: Using a password on the command line interface can be insecure.
+[root@mysql-db03 binlog]# ll
+total 32
+-rw-r--r--. 1 root root 143 Sep 5 20:53 mysql-bin.000001
+-rw-r--r--. 1 root root 143 Sep 5 20:53 mysql-bin.000002
+-rw-r--r--. 1 root root 331 Sep 5 20:53 mysql-bin.000003
+-rw-r--r--. 1 root root 3114 Sep 5 20:53 mysql-bin.000004
+-rw-r--r--. 1 root root 254 Sep 5 20:53 mysql-bin.000005
+-rw-r--r--. 1 root root 800 Sep 5 20:53 mysql-bin.000006
+-rw-r--r--. 1 root root 2714 Sep 5 20:53 mysql-bin.000007
+-rw-r--r--. 1 root root 120 Sep 5 20:53 mysql-bin.000008
+[root@mysql-db03 binlog]# ps -ef | grep mysqlbinlog | grep -v grep
+root 16061 12786 0 20:53 pts/2 00:00:00 mysqlbinlog -R --host=192.168.0.52 --user=mha --password=x xxxx --raw --stop-never mysql-bin.000001
+</code></pre>
+<h2 id="83-&#x542F;&#x52A8;mha&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;">8.3 &#x542F;&#x52A8;mha&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;</h2>
+<pre><code class="lang-shell">[root@mysql-db03 binlog]# nohup masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover &lt; /dev/null &gt; /var/log/mha/mha1/manager.log 2&gt;&amp;1 &amp;
+[root@mysql-db03 binlog]# ps -ef | grep perl | grep -v grep
+root 15697 13211 0 20:42 pts/3 00:00:00 perl /usr/bin/masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover
+</code></pre>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Mha-Atlas-MySQL/7.配置VIP漂移.html" class="navigation navigation-prev " aria-label="Previous page: 7.配置VIP漂移"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../Mha-Atlas-MySQL/9.mysql中间件Atlas.html" class="navigation navigation-next " aria-label="Next page: 9.mysql中间件Atlas"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+ 
+<script src="../gitbook/app-min.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/jquery-2.1.1.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/underscore-min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/sequence-diagram-min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/fontsettings.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-theme-comscore/test.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"sequence-diagrams":{"theme":"simple"},"js-sequence-diagram":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"toggle-chapters":{},"splitter":{},"theme-comscore":{},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+ <!-- body:end -->
+<!-- body:end -->
+    <div class="footer">yangxiaoqi </div>
+    
+</body>
+<!-- End of book MyBook -->
+<!-- End of book MyBook -->
+
+
+</html>

@@ -1,0 +1,41 @@
+{
+	"variables": {
+		"theme": "theme-green",
+		"copyright": "yangxiaoqi"
+	},
+	"plugins": [
+		"js-sequence-diagram",
+		"fontsettings",
+		"highlight",
+		"toggle-chapters",
+		"splitter",
+		"-katex",
+		"-codeblock-filename",
+		"-advanced-emoji",
+		"-ace",
+		"-search",
+		"-emphasize",
+		"-sharing", 
+		"toggle-chapters",
+		"theme-comscore"
+	],
+	"pluginsConfig": {
+		"sequence-diagrams": {
+			"theme": "simple"
+		}
+	},
+	"collapsible_menu": true,
+	"level_number": true,
+	"links": {
+		"gitbook": false,
+		"sharing": {
+			"all": false,
+			"vk": false,
+			"facebook": false,
+			"twitter": false,
+			"google": false,
+			"weibo": false
+		}
+	}
+	
+}

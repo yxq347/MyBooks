@@ -1,0 +1,668 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<!-- Start book MyBook -->
+<!-- Start book MyBook -->
+
+<head>
+    <!-- head:start -->
+<!-- head:start -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>5.部署MHA | MyBook</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="description" content="">
+    <meta name="generator" content="GitBook 1.2.27">  
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/styles.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-theme-comscore/test.css">
+        
+    
+    
+ 
+    
+    
+    <link rel="next" href="../Mha-Atlas-MySQL/6.MHA参数验证实践.html" />
+    
+    
+    <link rel="prev" href="../Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html" />
+    
+ <script src='//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js'></script>
+<!-- head:end -->
+<!-- head:end -->
+    
+    <style>
+        .articles{
+            display: none;
+        }
+        .active>.articles{
+            display: block;
+        }
+    </style>
+    
+</head>
+
+<body class="theme-green">
+    <div class="header">
+        <a aria-label="Table of Contents" class="btn-toggle-summary" href="#">
+            <i class="fa fa-align-justify"></i>
+        </a>
+        <a class="logo">MyBook</a>
+        <ul class="nav">
+            
+        </ul>
+    </div>
+    <!-- body:start -->
+<!-- body:start --> 
+    <div class="book"
+        data-level="1.5"
+        data-chapter-title="5.部署MHA"
+        data-filepath="Mha-Atlas-MySQL/5.部署MHA.md"
+        data-basepath=".."
+        data-revision="Tue Mar 05 2019 15:49:20 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        MyBook
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Mha-Atlas-MySQL/0.readme.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/0.readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Mha-Atlas-MySQL高可用方案实践
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="Mha-Atlas-MySQL/1.mysql-mha环境准备.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/1.mysql-mha环境准备.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1.mysql-mha环境准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Mha-Atlas-MySQL/2.mha简介.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/2.mha简介.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        2.mha简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Mha-Atlas-MySQL/3.mysql环境准备.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/3.mysql环境准备.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        3.mysql环境准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        4.配置基于GTID的主从复制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.5" data-path="Mha-Atlas-MySQL/5.部署MHA.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/5.部署MHA.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        5.部署MHA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Mha-Atlas-MySQL/6.MHA参数验证实践.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/6.MHA参数验证实践.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        6.MHA参数验证实践
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Mha-Atlas-MySQL/7.配置VIP漂移.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/7.配置VIP漂移.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        7.配置VIP漂移
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        8.配置binlog-server备份服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="Mha-Atlas-MySQL/9.mysql中间件Atlas.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/9.mysql中间件Atlas.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                        9.mysql中间件Atlas
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >MyBook</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="5&#x90E8;&#x7F72;mha">5.&#x90E8;&#x7F72;MHA</h1>
+<h2 id="51--&#x73AF;&#x5883;&#x51C6;&#x5907;&#xFF08;&#x6240;&#x6709;&#x8282;&#x70B9;mysql-db01mysql-db02mysql-db03&#xFF09;">5.1  &#x73AF;&#x5883;&#x51C6;&#x5907;&#xFF08;&#x6240;&#x6709;&#x8282;&#x70B9;mysql-db01,mysql-db02,mysql-db03&#xFF09;</h2>
+<pre><code class="lang-shell">#&#x5149;&#x76D8;&#x5B89;&#x88C5;&#x4F9D;&#x8D56;&#x5305;
+[root@mysql-db01 ~]# yum -y install perl-DBD-MySQL
+
+#&#x5B89;&#x88C5;mha4mysql-node-0.56-0.el6.noarch.rpm
+[root@mysql-db01 rpm]# rpm -ivh mha4mysql-node-0.56-0.el6.noarch.rpm
+Preparing... ########################################### [100%]
+ 1:mha4mysql-node ########################################### [100%]
+
+[root@mysql-db01 ~]# mysql -uroot -p123123
+
+mysql&gt; grant all privileges on *.* to mha@&apos;192.168.0.%&apos; identified by &apos;123123&apos;;
+Query OK, 0 rows affected (0.00 sec)
+mysql&gt; select user,host from mysql.user where user=&apos;mha&apos;;
++------+-------------+
+| user | host |
++------+-------------+
+| mha | 192.168.0.% | #&#x4E3B;&#x5E93;&#x4E0A;&#x521B;&#x5EFA;&#x4ECE;&#x5E93;&#x4F1A;&#x81EA;&#x52A8;&#x590D;&#x5236;
++------+-------------+
+1 row in set (0.00 sec)
+
+#&#x7279;&#x522B;&#x63D0;&#x793A;&#xFF1A;3&#x53F0;MySQL&#x90FD;&#x9700;&#x8981;&#x5B89;&#x88C5;mha4mysql-node-0.56-0.el6.noarch.rpm
+</code></pre>
+<h2 id="52-&#x90E8;&#x7F72;&#x7BA1;&#x7406;&#x8282;&#x70B9;&#xFF08;mha-manager&#xFF09;">5.2 &#x90E8;&#x7F72;&#x7BA1;&#x7406;&#x8282;&#x70B9;&#xFF08;mha-manager&#xFF09;</h2>
+<h3 id="521--&#x5728;mysql-db03&#x4E0A;&#x90E8;&#x7F72;&#x7BA1;&#x7406;&#x8282;&#x70B9;">5.2.1  &#x5728;mysql-db03&#x4E0A;&#x90E8;&#x7F72;&#x7BA1;&#x7406;&#x8282;&#x70B9;</h3>
+<pre><code class="lang-shell">#&#x4F7F;&#x7528;&#x963F;&#x91CC;&#x4E91;&#x6E90;+epel&#x6E90;
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-6.repo
+wget -O /etc/yum.repos.d/epel-6.repo http://mirrors.aliyun.com/repo/epel-6.repo
+
+#&#x5B89;&#x88C5;manager&#x4F9D;&#x8D56;&#x5305;&#xFF08;&#x9700;&#x8981;&#x516C;&#x7F51;&#x6E90;&#xFF09;
+[root@mysql-db03 ~]# yum -y install perl-Config-Tiny epel-release perl-Log-Dispatch perl-Parallel-ForkManager perl-Time-HiRes
+
+#&#x5B89;&#x88C5;manager&#x5305;
+[root@mysql-db03 rpm]# rpm -ivh mha4mysql-manager-0.56-0.el6.noarch.rpm
+Preparing... ########################################### [100%]
+ 1:mha4mysql-manager ########################################### [100%]
+</code></pre>
+<h3 id="522-&#x7F16;&#x8F91;&#x914D;&#x7F6E;&#x6587;&#x4EF6;">5.2.2 &#x7F16;&#x8F91;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</h3>
+<pre><code class="lang-shell">#&#x521B;&#x5EFA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x76EE;&#x5F55;
+[root@mysql-db03 ~]# mkdir -p /etc/mha
+
+#&#x521B;&#x5EFA;&#x65E5;&#x5FD7;&#x76EE;&#x5F55;
+[root@mysql-db03 ~]# mkdir -p /var/log/mha/mha1
+
+#&#x521B;&#x5EFA;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x9ED8;&#x8BA4;&#x6CA1;&#x6709;&#xFF09;
+[root@mysql-db03 ~]# cd /etc/mha/
+[root@mysql-db03 mha]# ls
+[root@mysql-db03 mha]# vim /etc/mha/mha1.cnf
+[root@mysql-db03 mha]# cat /etc/mha/mha1.cnf
+[server default]
+manager_log=/var/log/mha/mha1/manager #manager&#x7BA1;&#x7406;&#x65E5;&#x5FD7;&#x5B58;&#x653E;&#x8DEF;&#x5F84; 
+manager_workdir=/var/log/mha/mha1 #manager&#x7BA1;&#x7406;&#x65E5;&#x5FD7;&#x7684;&#x76EE;&#x5F55;&#x8DEF;&#x5F84;
+master_binlog_dir=/usr/local/mysql/data #binlog&#x65E5;&#x5FD7;&#x7684;&#x5B58;&#x653E;&#x8DEF;&#x5F84;
+user=mha #&#x7BA1;&#x7406;&#x8D26;&#x6237;
+password=123123 #&#x7BA1;&#x7406;&#x8D26;&#x6237;&#x5BC6;&#x7801;
+ping_interval=2 #&#x5B58;&#x6D3B;&#x68C0;&#x67E5;&#x7684;&#x95F4;&#x9694;&#x65F6;&#x95F4;
+repl_user=rep #&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7684;&#x6388;&#x6743;&#x8D26;&#x6237;repl_password=123123 #&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7684;&#x6388;&#x6743;&#x8D26;&#x6237;&#x5BC6;&#x7801;
+ssh_user=root #&#x7528;&#x4E8E;ssh&#x8FDE;&#x63A5;&#x7684;&#x8D26;&#x6237;
+[server1]
+hostname=192.168.0.51 
+port=3306 
+
+[server2]
+#candidate_master=1 #&#x6B64;&#x6761;&#x6682;&#x65F6;&#x6CE8;&#x91CA;&#x6389;&#xFF08;&#x540E;&#x9762;&#x89E3;&#x91CA;&#xFF09;
+#check_repl_delay=0 #&#x6B64;&#x6761;&#x6682;&#x65F6;&#x6CE8;&#x91CA;&#x6389;&#xFF08;&#x540E;&#x9762;&#x89E3;&#x91CA;&#xFF09;hostname=192.168.0.52
+port=3306
+
+[server3]
+hostname=192.168.0.53
+port=3306
+
+#**&#x7279;&#x522B;&#x63D0;&#x793A;&#xFF1A;**#&#x4EE5;&#x4E0A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x91CC;&#x6BCF;&#x884C;&#x7684;&#x6700;&#x540E;&#x4E0D;&#x8981;&#x7559;&#x6709;&#x7A7A;&#x683C;&#xFF0C;&#x56E0;&#x6B64;&#xFF0C;&#x4E0D;&#x80FD;&#x590D;&#x5236;&#x7684;&#x5466;
+</code></pre>
+<blockquote>
+<h2 id="&#x7279;&#x522B;&#x8BF4;&#x660E;&#xFF1A;"><strong>&#x7279;&#x522B;&#x8BF4;&#x660E;&#xFF1A;</strong></h2>
+<p>&#x53C2;&#x6570;&#xFF1A;candidate_master=1 
+&#x89E3;&#x91CA;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E3A;&#x5019;&#x9009;master&#xFF0C;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x8BE5;&#x53C2;&#x6570;&#x4EE5;&#x540E;&#xFF0C;&#x53D1;&#x751F;&#x4E3B;&#x4ECE;&#x5207;&#x6362;&#x4EE5;&#x540E;&#x4F1A;&#x5C06;&#x6B64;&#x4ECE;&#x5E93;&#x63D0;&#x5347;&#x4E3A;&#x4E3B;&#x5E93;&#xFF0C;&#x5373;&#x4F7F;&#x8FD9;&#x4E2A;&#x4E3B;&#x5E93;&#x4E0D;&#x662F;&#x96C6;&#x7FA4;&#x4E2D;&#x4E8B;&#x4EF6;&#x6700;&#x65B0;&#x7684;slave &#x3002;
+&#x53C2;&#x6570;&#xFF1A;check_repl_delay=0 
+&#x89E3;&#x91CA;&#xFF1A;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#x5982;&#x679C;&#x4E00;&#x4E2A;slave&#x843D;&#x540E;master 100M&#x7684;relay logs  &#x7684;&#x8BDD;&#xFF0C;MHA&#x5C06;&#x4E0D;&#x4F1A;&#x9009;&#x62E9;&#x8BE5;slave&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x65B0;&#x7684;master&#xFF0C;&#x56E0;&#x4E3A;&#x5BF9;&#x4E8E;&#x8FD9;&#x4E2A;slave&#x7684;&#x6062;&#x590D;&#x9700;&#x8981;&#x82B1;&#x8D39;&#x5F88;&#x957F;&#x65F6;&#x95F4;&#xFF0C;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;check_repl_delay=0,MHA&#x89E6;&#x53D1;&#x5207;&#x6362;&#x5728;&#x9009;&#x62E9;&#x4E00;&#x4E2A;&#x65B0;&#x7684;master&#x7684;&#x65F6;&#x5019;&#x5C06;&#x4F1A;&#x5FFD;&#x7565;&#x590D;&#x5236;&#x5EF6;&#x65F6;&#xFF0C;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x5BF9;&#x4E8E;&#x8BBE;&#x7F6E;&#x4E86;candidate_master=1&#x7684;&#x4E3B;&#x673A;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x5019;&#x9009;&#x4E3B;&#x5728;&#x5207;&#x6362;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E00;&#x5B9A;&#x662F;&#x65B0;&#x7684;master&#x3002;</p>
+</blockquote>
+<h3 id="53--&#x914D;&#x7F6E;ssh&#x4FE1;&#x4EFB;&#xFF08;&#x6240;&#x6709;&#x8282;&#x70B9;mysql-db01mysql-db02mysql-db03&#xFF09;">5.3  &#x914D;&#x7F6E;ssh&#x4FE1;&#x4EFB;&#xFF08;&#x6240;&#x6709;&#x8282;&#x70B9;mysql-db01,mysql-db02,mysql-db03&#xFF09;</h3>
+<pre><code class="lang-shell">#&#x521B;&#x5EFA;&#x5BC6;&#x94A5;&#x5BF9;
+[root@mysql-db03 ~]# ssh-keygen -t dsa -P &quot;&quot; -f ~/.ssh/id_dsa &gt;/dev/null 2&gt;&amp;1
+
+#&#x53D1;&#x9001;mysql-db03&#x516C;&#x94A5;&#xFF0C;&#x5305;&#x62EC;&#x81EA;&#x5DF1;
+[root@mysql-db03 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.51
+[root@mysql-db03 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.52
+[root@mysql-db03 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.53
+
+#&#x53D1;&#x9001;mysql-db02&#x516C;&#x94A5;&#xFF0C;&#x5305;&#x62EC;&#x81EA;&#x5DF1;
+[root@mysql-db02 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.51
+[root@mysql-db02 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.52
+[root@mysql-db02 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.53
+
+#&#x53D1;&#x9001;mysql-db01&#x516C;&#x94A5;&#xFF0C;&#x5305;&#x62EC;&#x81EA;&#x5DF1;
+[root@mysql-db01 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.51
+[root@mysql-db01 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.52
+[root@mysql-db01 ~]# ssh-copy-id -i /root/.ssh/id_dsa.pub root@192.168.0.53
+</code></pre>
+<h2 id="54-&#x542F;&#x52A8;&#x6D4B;&#x8BD5;">5.4 &#x542F;&#x52A8;&#x6D4B;&#x8BD5;</h2>
+<h3 id="541-ssh&#x68C0;&#x67E5;&#x68C0;&#x6D4B;">5.4.1 ssh&#x68C0;&#x67E5;&#x68C0;&#x6D4B;</h3>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# masterha_check_ssh --conf=/etc/mha/mha1.cnf #ssh&#x68C0;&#x67E5;&#x547D;&#x4EE4;
+Tue Sep 5 03:01:38 2017 - [warning] Global configuration file /etc/masterha_default.cnf not found. Skipping.
+Tue Sep 5 03:01:38 2017 - [info] Reading application default configuration from /etc/mha/mha1.cnf..
+Tue Sep 5 03:01:38 2017 - [info] Reading server configuration from /etc/mha/mha1.cnf..
+Tue Sep 5 03:01:38 2017 - [info] Starting SSH connection tests..
+..&#x4E2D;&#x95F4;&#x7701;&#x7565;&#x82E5;&#x5E72;&#x884C;..
+Tue Sep 5 03:01:40 2017 - [debug] Connecting via SSH from root@192.168.0.53(192.168.0.53:22) to root@192.168.0.52(192.168.0.52:22)..
+Tue Sep 5 03:01:40 2017 - [debug] ok.
+Tue Sep 5 03:01:40 2017 - [info] All SSH connection tests passed successfully. #&#x51FA;&#x73B0;&#x8FD9;&#x4E2A;&#x5C31;&#x8868;&#x793A;&#x6210;&#x529F;
+</code></pre>
+<h3 id="542-&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x68C0;&#x6D4B;">5.4.2 &#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x68C0;&#x6D4B;</h3>
+<p>&#xFF08;1&#xFF09;&#x9519;&#x8BEF;&#x7684;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x68C0;&#x6D4B;</p>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# masterha_check_repl  --conf=/etc/mha/mha1.cnf
+</code></pre>
+<blockquote>
+<p>&#x5982;&#x679C;&#x4E0D;&#x51FA;&#x610F;&#x5916;&#xFF0C;&#x540C;&#x5B66;&#x4EEC;&#x7684;&#x68C0;&#x6D4B;&#x7ED3;&#x679C;&#x90FD;&#x4F1A;&#x662F;&#x4E0B;&#x9762;&#x7684;&#x6837;&#x5B50;</p>
+</blockquote>
+<p><img src="images/04.png" alt=""></p>
+<blockquote>
+<p>&#x56E0;&#x6B64;&#x5728;mysql-db02&#x548C;mysql-db03&#x4E0A;&#x6DFB;&#x52A0;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7684;&#x7528;&#x6237;&#x5373;&#x53EF;&#x3002; </p>
+<pre><code class="lang-mysql">grant replication slave on  *.* to rep@&apos;192.168.0.%&apos; identified by &apos;123123&apos;;
+</code></pre>
+<p>&#x518D;&#x6B21;&#x68C0;&#x67E5;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<p>&#x518D;&#x6B21;&#x68C0;&#x67E5;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+</blockquote>
+<p><img src="images/05.png" alt=""></p>
+<h2 id="55-&#x542F;&#x52A8;mha">5.5 &#x542F;&#x52A8;MHA</h2>
+<pre><code class="lang-shell">#&#x542F;&#x52A8;
+[root@mysql-db03 ~]# nohup masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover &lt; /dev/null &gt; /var/log/mha/mha1/manager.log 2&gt;&amp;1 &amp;
+[root@mysql-db03 ~]# ps -ef | grep perl | grep -v greproot 4961 4690 0 06:33 pts/2 00:00:00 perl /usr/bin/masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover
+#&#x8BF4;&#x660E;&#xFF1A;
+nohup:&#x542F;&#x52A8;&#x547D;&#x4EE4;
+--conf&#xFF1A;&#x6307;&#x5B9A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4F4D;&#x7F6E;
+--remove_dead_master_conf&#xFF1A;&#x5982;&#x679C;&#x6709;master down&#x4E86;&#xFF0C;&#x5C31;&#x53BB;&#x6389;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC;&#x8BE5;master&#x7684;&#x90E8;&#x5206;&#x3002;
+</code></pre>
+<h2 id="56-&#x8FDB;&#x884C;mha&#x81EA;&#x52A8;&#x5207;&#x6362;master&#x7684;&#x6D4B;&#x8BD5;">5.6 &#x8FDB;&#x884C;mha&#x81EA;&#x52A8;&#x5207;&#x6362;master&#x7684;&#x6D4B;&#x8BD5;</h2>
+<p><strong>&#x521D;&#x59CB;&#x72B6;&#x6001;&#xFF1A;</strong></p>
+<p><img src="images/06.png" alt=""></p>
+<p>&#xFF08;1&#xFF09;&#x767B;&#x9646;mysql-db02(192.168.0.53)&#x67E5;&#x770B;&#x4FE1;&#x606F;&#x72B6;&#x6001;</p>
+<pre><code class="lang-mysql">#&#x767B;&#x9646;&#x6570;&#x636E;&#x5E93;mysql-db02(192.168.0.53)
+[root@mysql-db03 ~]# mysql -uroot -p123123
+mysql&gt; show slave status\G
+*************************** 1. row *************************** 
+Slave_IO_State: Waiting for master to send event 
+Master_Host: 192.168.0.51 #&#x8FD9;&#x662F;&#x4E3B;&#x5E93;IP&#x5730;&#x5740; 
+Master_User: rep 
+Master_Port: 3306 
+Connect_Retry: 60 
+Master_Log_File: mysql-bin.000003 
+Read_Master_Log_Pos: 1656 
+Relay_Log_File: mysql-db02-relay-bin.000004 
+Relay_Log_Pos: 1796 
+Relay_Master_Log_File: mysql-bin.000003 
+Slave_IO_Running: Yes 
+Slave_SQL_Running: Yes 
+..&#x4EE5;&#x4E0B;&#x7701;&#x7565;&#x82E5;&#x5E72;&#x5185;&#x5BB9;..
+</code></pre>
+<p>&#xFF08;2&#xFF09;&#x505C;&#x6389;mysql-db01(192.168.0.51)&#x4E0A;&#x7684;MySQL&#x670D;&#x52A1;</p>
+<pre><code class="lang-shell">[root@mysql-db01 ~]# /etc/init.d/mysqld stop
+Shutting down MySQL..... SUCCESS!
+</code></pre>
+<p>&#xFF08;3&#xFF09;&#x67E5;&#x770B;mysql-db03&#x4E0A;&#x7684;MySQL&#x4ECE;&#x5E93;&#x540C;&#x6B65;&#x72B6;&#x6001;</p>
+<pre><code class="lang-mysql">[root@mysql-db03 ~]# mysql -uroot -p123123 -e &apos;show slave status\G&apos;
+Warning: Using a password on the command line interface can be insecure.
+*************************** 1. row *************************** 
+Slave_IO_State: Waiting for master to send event 
+Master_Host: 192.168.0.52 #&#x73B0;&#x5728;&#x7684;&#x4E3B;&#x5E93;IP 
+Master_User: rep 
+Master_Port: 3306 
+Connect_Retry: 60 
+Master_Log_File: mysql-bin.000006 #binlog&#x65E5;&#x5FD7; 
+Read_Master_Log_Pos: 777 #binlog&#x65E5;&#x5FD7;&#x4F4D;&#x7F6E; 
+Relay_Log_File: mysql-db03-relay-bin.000002 
+Relay_Log_Pos: 408 
+Relay_Master_Log_File: mysql-bin.000006 
+Slave_IO_Running: Yes 
+Slave_SQL_Running: Yes 
+..&#x4EE5;&#x4E0B;&#x7701;&#x7565;&#x82E5;&#x5E72;&#x5185;&#x5BB9;..
+</code></pre>
+<p>&#xFF08;4&#xFF09;&#x67E5;&#x770B;mysql-db02&#x4E0A;&#x7684;MySQL&#xFF0C;&#x4E3B;&#x5E93;&#x540C;&#x6B65;&#x72B6;&#x6001;&#x3002;</p>
+<p><img src="images/07.png" alt=""></p>
+<p>&#xFF08;5&#xFF09;&#x67E5;&#x770B;mysql-db03&#x4E0A;&#x7684;mha&#x8FDB;&#x7A0B;&#x72B6;&#x6001;</p>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# ps -ef | grep perl | grep -v grep #&#x67E5;&#x8BE2;&#x53D1;&#x73B0;mha&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x6CA1;&#x4E86;
+[root@mysql-db03 ~]#
+</code></pre>
+<p>&#xFF08;6&#xFF09;&#x67E5;&#x770B;mha&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4FE1;&#x606F;</p>
+<p><img src="images/08.png" alt=""></p>
+<blockquote>
+<p><strong>&#x8BF4;&#x660E;&#xFF1A;</strong> 
+&#x5F53;&#x4F5C;&#x4E3A;&#x4E3B;&#x5E93;&#x7684;mysql-db01&#x4E0A;&#x7684;MySQL&#x5B95;&#x673A;&#x4EE5;&#x540E;&#xFF0C;mha&#x901A;&#x8FC7;&#x68C0;&#x6D4B;&#x53D1;&#x73B0;mysql-db01&#x5B95;&#x673A;&#xFF0C;&#x90A3;&#x4E48;&#x4F1A;&#x5C06;binlog&#x65E5;&#x5FD7;&#x6700;&#x5168;&#x7684;&#x4ECE;&#x5E93;&#x7ACB;&#x523B;&#x63D0;&#x5347;&#x4E3A;&#x4E3B;&#x5E93;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x7684;&#x4ECE;&#x5E93;&#x4F1A;&#x6307;&#x5411;&#x65B0;&#x7684;&#x4E3B;&#x5E93;&#x8FDB;&#x884C;&#x518D;&#x6B21;&#x540C;&#x6B65;&#x3002;</p>
+</blockquote>
+<h2 id="57-&#x8FDB;&#x884C;mha&#x7684;&#x6545;&#x969C;&#x8FD8;&#x539F;&#x6D4B;&#x8BD5;">5.7 &#x8FDB;&#x884C;mha&#x7684;&#x6545;&#x969C;&#x8FD8;&#x539F;&#x6D4B;&#x8BD5;</h2>
+<blockquote>
+<p>&#x7531;&#x4E8E;mysql-db01&#x7684;MySQL&#x670D;&#x52A1;&#x5B95;&#x673A;&#xFF0C;&#x56E0;&#x6B64;mha&#x5C06;mysql-db02&#x63D0;&#x5347;&#x4E3A;&#x4E86;&#x4E3B;&#x5E93;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5C06;&#x5B95;&#x673A;&#x7684;mysql-db01&#x7684;MySQL&#x670D;&#x52A1;&#x542F;&#x52A8;&#xFF0C;&#x7136;&#x540E;&#x4F5C;&#x4E3A;&#x4E3B;&#x5E93;mysql-db02&#x7684;&#x4ECE;&#x5E93;&#x3002;</p>
+</blockquote>
+<p><strong>&#x521D;&#x59CB;&#x72B6;&#x6001;&#xFF1A;</strong></p>
+<p><img src="images/09.png" alt=""></p>
+<p>&#xFF08;1&#xFF09;&#x5C06;&#x6545;&#x969C;&#x5B95;&#x673A;&#x7684;mysql-db01&#x7684;MySQL&#x670D;&#x52A1;&#x542F;&#x52A8;&#x5E76;&#x6388;&#x6743;&#x8FDB;&#x884C;&#x4ECE;&#x540C;&#x6B65;</p>
+<pre><code class="lang-mysql">[root@mysql-db01 ~]# /etc/init.d/mysqld start
+Starting MySQL. SUCCESS! 
+[root@mysql-db01 ~]# mysql -uroot -p123123
+mysql&gt; CHANGE MASTER TO MASTER_HOST=&apos;192.168.0.52&apos;, MASTER_PORT=3306, MASTER_AUTO_POSITION=1, MASTER_USER=&apos;rep&apos;, MASTER_PASSWORD=&apos;123123&apos;;
+mysql&gt; start slave;
+mysql&gt; show slave status\G #&#x67E5;&#x770B;&#x4ECE;&#x540C;&#x6B65;&#x72B6;&#x6001;
+</code></pre>
+<p>&#xFF08;2&#xFF09;&#x5C06;mha&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC;&#x7F3A;&#x5931;&#x7684;&#x90E8;&#x5206;&#x8865;&#x5168;</p>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# cat /etc/mha/mha1.cnf
+[server default]
+manager_log=/var/log/mha/mha1/manager
+manager_workdir=/var/log/mha/mha1
+master_binlog_dir=/usr/local/mysql/data
+password=123123
+ping_interval=2
+repl_password=123123
+repl_user=rep
+ssh_user=root
+user=mha
+
+[server1]
+hostname=192.168.0.51
+port=3306
+
+[server2]
+hostname=192.168.0.52
+port=3306
+
+[server3]
+hostname=192.168.0.53
+port=3306
+</code></pre>
+<p>&#xFF08;3&#xFF09;&#x542F;&#x52A8;mha&#x8FDB;&#x7A0B;</p>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# nohup masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover &lt; /dev/null &gt; /var/log/mha/mha1/manager.log 2&gt;&amp;1 &amp;
+[root@mysql-db03 ~]# ps -ef | grep perl | grep -v grep
+root 5226 4690 0 09:42 pts/2 00:00:00 perl /usr/bin/masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover
+</code></pre>
+<p>&#xFF08;4&#xFF09;&#x505C;&#x6389;mysql-db02&#x4E0A;&#x7684;MySQL&#x670D;&#x52A1;</p>
+<pre><code class="lang-shell">[root@mysql-db02 ~]# /etc/init.d/mysqld stop
+Shutting down MySQL..... SUCCESS!
+</code></pre>
+<p>&#xFF08;5&#xFF09;&#x67E5;&#x770B;mysql-db03&#x4E0A;&#x7684;&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x72B6;&#x6001;</p>
+<pre><code class="lang-mysql">[root@mysql-db03 ~]# mysql -uroot -p123123 -e &apos;show slave status\G&apos;
+Warning: Using a password on the command line interface can be insecure.
+*************************** 1. row *************************** 
+Slave_IO_State: Waiting for master to send event 
+Master_Host: 192.168.0.51 #&#x6B64;&#x65F6;&#x7684;&#x4E3B;&#x5E93;IP&#x5207;&#x6362;&#x56DE;&#x4E86;
+mysql-db01 Master_User: rep 
+Master_Port: 3306 
+Connect_Retry: 60 
+Master_Log_File: mysql-bin.000005 
+Read_Master_Log_Pos: 231 
+Relay_Log_File: mysql-db03-relay-bin.000002 
+Relay_Log_Pos: 361 
+Relay_Master_Log_File: mysql-bin.000005 
+Slave_IO_Running: Yes 
+Slave_SQL_Running: Yes 
+..&#x4EE5;&#x4E0B;&#x7701;&#x7565;&#x82E5;&#x5E72;&#x884C;..
+</code></pre>
+<p>&#xFF08;6&#xFF09;&#x542F;&#x52A8;mysql-db02&#x4E0A;&#x7684;MySQL&#x670D;&#x52A1;</p>
+<pre><code class="lang-mysql">[root@mysql-db02 ~]# /etc/init.d/mysqld start
+Starting MySQL. SUCCESS! 
+[root@mysql-db02 ~]# mysql -uroot -p123123
+mysql&gt; CHANGE MASTER TO MASTER_HOST=&apos;192.168.0.51&apos;, MASTER_PORT=3306, MASTER_AUTO_POSITION=1, MASTER_USER=&apos;rep&apos;, MASTER_PASSWORD=&apos;123123&apos;;
+mysql&gt; start slave;
+mysql&gt; show slave status\G#&#x67E5;&#x770B;&#x4ECE;&#x540C;&#x6B65;&#x72B6;&#x6001;
+</code></pre>
+<p>&#xFF08;7&#xFF09;&#x518D;&#x6B21;&#x8865;&#x5168;mha&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x542F;&#x52A8;mha&#x8FDB;&#x7A0B;</p>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# cat /etc/mha/mha1.cnf
+[server default]
+manager_log=/var/log/mha/mha1/manager
+manager_workdir=/var/log/mha/mha1
+master_binlog_dir=/usr/local/mysql/data
+password=123123
+ping_interval=2
+repl_password=123123
+repl_user=rep
+ssh_user=root
+user=mha
+
+[server1]
+hostname=192.168.0.51
+port=3306
+
+[server2]
+hostname=192.168.0.52
+port=3306
+
+[server3]
+#andidate_master=1
+#check_repl_delay=0
+hostname=192.168.0.53
+port=3306
+[root@mysql-db03 ~]# nohup masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover &lt; /dev/null &gt; /var/log/mha/mha1/manager.log 2&gt;&amp;1 &amp;
+[root@mysql-db03 ~]# ps -ef | grep perl | grep -v grep
+root 5226 4690 0 09:42 pts/2 00:00:01 perl /usr/bin/masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover
+</code></pre>
+<p><strong>&#x6B64;&#x65F6;&#x7684;&#x521D;&#x59CB;&#x72B6;&#x6001;&#x8FD8;&#x539F;&#x4E3A;&#x4E0B;&#x56FE;&#xFF1A;</strong></p>
+<p><img src="images/06.png" alt=""></p>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html" class="navigation navigation-prev " aria-label="Previous page: 4.配置基于GTID的主从复制"><i class="fa fa-angle-left"></i></a>
+        
+        
+        <a href="../Mha-Atlas-MySQL/6.MHA参数验证实践.html" class="navigation navigation-next " aria-label="Next page: 6.MHA参数验证实践"><i class="fa fa-angle-right"></i></a>
+        
+    </div>
+</div>
+ 
+<script src="../gitbook/app-min.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/jquery-2.1.1.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/underscore-min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/sequence-diagram-min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/fontsettings.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-theme-comscore/test.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"sequence-diagrams":{"theme":"simple"},"js-sequence-diagram":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"toggle-chapters":{},"splitter":{},"theme-comscore":{},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+ <!-- body:end -->
+<!-- body:end -->
+    <div class="footer">yangxiaoqi </div>
+    
+</body>
+<!-- End of book MyBook -->
+<!-- End of book MyBook -->
+
+
+</html>

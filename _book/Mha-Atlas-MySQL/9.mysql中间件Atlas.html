@@ -1,0 +1,696 @@
+<!DOCTYPE HTML>
+<html lang="en" >
+<!-- Start book MyBook -->
+<!-- Start book MyBook -->
+
+<head>
+    <!-- head:start -->
+<!-- head:start -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>9.mysql中间件Atlas | MyBook</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="description" content="">
+    <meta name="generator" content="GitBook 1.2.27">  
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon"> 
+    <link rel="stylesheet" href="../gitbook/style.css">
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/styles.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-fontsettings/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-highlight/website.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-splitter/splitter.css">
+        
+    
+        
+        <link rel="stylesheet" href="../gitbook/plugins/gitbook-plugin-theme-comscore/test.css">
+        
+    
+    
+ 
+    
+    
+    
+    <link rel="prev" href="../Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html" />
+    
+ <script src='//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js'></script>
+<!-- head:end -->
+<!-- head:end -->
+    
+    <style>
+        .articles{
+            display: none;
+        }
+        .active>.articles{
+            display: block;
+        }
+    </style>
+    
+</head>
+
+<body class="theme-green">
+    <div class="header">
+        <a aria-label="Table of Contents" class="btn-toggle-summary" href="#">
+            <i class="fa fa-align-justify"></i>
+        </a>
+        <a class="logo">MyBook</a>
+        <ul class="nav">
+            
+        </ul>
+    </div>
+    <!-- body:start -->
+<!-- body:start --> 
+    <div class="book"
+        data-level="1.9"
+        data-chapter-title="9.mysql中间件Atlas"
+        data-filepath="Mha-Atlas-MySQL/9.mysql中间件Atlas.md"
+        data-basepath=".."
+        data-revision="Tue Mar 05 2019 15:49:20 GMT+0800 (中国标准时间)"
+        data-innerlanguage="">
+    
+
+<div class="book-summary">
+    <nav role="navigation">
+        <ul class="summary">
+            
+            
+            
+            
+
+            
+
+            
+    
+        <li class="chapter " data-level="0" data-path="index.html">
+            
+                
+                    <a href="../index.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                        MyBook
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1" data-path="Mha-Atlas-MySQL/0.readme.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/0.readme.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.</b>
+                        
+                        Mha-Atlas-MySQL高可用方案实践
+                    </a>
+            
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1" data-path="Mha-Atlas-MySQL/1.mysql-mha环境准备.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/1.mysql-mha环境准备.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.1.</b>
+                        
+                        1.mysql-mha环境准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="Mha-Atlas-MySQL/2.mha简介.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/2.mha简介.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.2.</b>
+                        
+                        2.mha简介
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="Mha-Atlas-MySQL/3.mysql环境准备.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/3.mysql环境准备.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.3.</b>
+                        
+                        3.mysql环境准备
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/4.配置基于GTID的主从复制.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.4.</b>
+                        
+                        4.配置基于GTID的主从复制
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="Mha-Atlas-MySQL/5.部署MHA.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/5.部署MHA.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.5.</b>
+                        
+                        5.部署MHA
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="Mha-Atlas-MySQL/6.MHA参数验证实践.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/6.MHA参数验证实践.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.6.</b>
+                        
+                        6.MHA参数验证实践
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="Mha-Atlas-MySQL/7.配置VIP漂移.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/7.配置VIP漂移.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.7.</b>
+                        
+                        7.配置VIP漂移
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.8.</b>
+                        
+                        8.配置binlog-server备份服务器
+                    </a>
+            
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9" data-path="Mha-Atlas-MySQL/9.mysql中间件Atlas.html">
+            
+                
+                    <a href="../Mha-Atlas-MySQL/9.mysql中间件Atlas.html">
+                
+                        <i class="fa fa-check"></i>
+                        
+                            <b>1.9.</b>
+                        
+                        9.mysql中间件Atlas
+                    </a>
+            
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+
+
+        </ul>
+    </nav>
+</div>
+
+    <div class="book-body">
+        <div class="body-inner">
+            <div class="book-header" role="navigation">
+    <!-- Actions Left -->
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../" >MyBook</a>
+    </h1>
+</div>
+
+            <div class="page-wrapper" tabindex="-1" role="main">
+                <div class="page-inner">
+                
+                
+                    <section class="normal" id="section-">
+                    
+                        <h1 id="9mysql&#x4E2D;&#x95F4;&#x4EF6;atlas">9.mysql&#x4E2D;&#x95F4;&#x4EF6;Atlas</h1>
+<h2 id="91-atlas&#x7B80;&#x4ECB;">9.1 Atlas&#x7B80;&#x4ECB;</h2>
+<blockquote>
+<p>Atlas&#x662F;&#x7531;Qihoo-360&#x516C;&#x53F8;web&#x5E73;&#x53F0;&#x90E8;&#x57FA;&#x7840;&#x67B6;&#x6784;&#x56E2;&#x961F;&#x5F00;&#x53D1;&#x7EF4;&#x62A4;&#x7684;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;MySQL&#x534F;&#x8BAE;&#x7684;&#x6570;&#x636E;&#x4E2D;&#x95F4;&#x5C42;&#x9879;&#x76EE;&#x3002;&#x5B83;&#x5728;MySQL&#x5B98;&#x65B9;&#x63A8;&#x51FA;&#x7684;MySQL-Proxy-0.8.2&#x7248;&#x672C;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x4FEE;&#x6539;&#x4E86;&#x5927;&#x91CF;bug&#xFF0C;&#x6DFB;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x529F;&#x80FD;&#x7279;&#x6027;&#x3002;&#x5B83;&#x5728;MySQL&#x5B98;&#x65B9;&#x63A8;&#x51FA;&#x7684;MySQL-Proxy0.8.2&#x7248;&#x672C;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x4FEE;&#x6539;&#x4E86;&#x5927;&#x91CF;bug&#xFF0C;&#x6DFB;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x529F;&#x80FD;&#x7279;&#x6027;&#x3002;</p>
+</blockquote>
+<h2 id="92-atlas&#x4E3B;&#x8981;&#x529F;&#x80FD;">9.2 Atlas&#x4E3B;&#x8981;&#x529F;&#x80FD;</h2>
+<ol>
+<li>&#x8BFB;&#x5199;&#x5206;&#x79BB; </li>
+<li>&#x4ECE;&#x5E93;&#x8D1F;&#x8F7D;&#x5747;&#x8861; </li>
+<li>IP&#x8FC7;&#x6EE4; </li>
+<li>&#x81EA;&#x52A8;&#x5206;&#x8868; </li>
+<li>DBA&#x53EF;&#x5E73;&#x6ED1;&#x4E0A;&#x4E0B;&#x7EBF;DB </li>
+<li>&#x81EA;&#x52A8;&#x6458;&#x9664;&#x5B95;&#x673A;&#x7684;DB </li>
+</ol>
+<h2 id="93--atlas&#x76F8;&#x5BF9;&#x4E8E;&#x5B98;&#x65B9;mysql-proxy&#x7684;&#x4F18;&#x52BF;">9.3  Atlas&#x76F8;&#x5BF9;&#x4E8E;&#x5B98;&#x65B9;MySQL-Proxy&#x7684;&#x4F18;&#x52BF;</h2>
+<ol>
+<li>&#x5C06;&#x4E3B;&#x6D41;&#x7A0B;&#x4E2D;&#x6240;&#x6709;Lua&#x4EE3;&#x7801;&#x7528;C&#x91CD;&#x5199;&#xFF0C;Lua&#x4EC5;&#x7528;&#x4E8E;&#x7BA1;&#x7406;&#x63A5;&#x53E3;&#xFF1B;</li>
+<li>&#x91CD;&#x5199;&#x7F51;&#x7EDC;&#x6A21;&#x578B;&#xFF0C;&#x7EBF;&#x7A0B;&#x6A21;&#x578B; &#xFF1B;</li>
+<li>&#x5B9E;&#x73B0;&#x4E86;&#x771F;&#x6B63;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x8FDE;&#x63A5;&#x6C60; &#xFF1B;</li>
+<li>&#x4F18;&#x5316;&#x4E86;&#x9501;&#x673A;&#x5236;&#xFF0C;&#x6027;&#x80FD;&#x63D0;&#x9AD8;&#x6570;&#x5341;&#x500D; &#x3002;</li>
+</ol>
+<h2 id="94-&#x5B89;&#x88C5;atlas">9.4 &#x5B89;&#x88C5;Atlas</h2>
+<blockquote>
+<p>&#x5B89;&#x88C5;Atlas&#x8D85;&#x7EA7;&#x7B80;&#x5355;&#xFF0C;&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;Atlas&#x6709;&#x4E24;&#x79CD;&#xFF1A; 
+&#xFF08;&#x666E;&#x901A;&#xFF09;&#xFF1A;Atlas-2.2.1.el6.x86_64.rpm 
+&#xFF08;&#x5206;&#x8868;&#xFF09;&#xFF1A;Atlas-sharding_1.0.1-el6.x86_64.rpm</p>
+</blockquote>
+<p><strong>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x4E0B;&#x8F7D;&#x666E;&#x901A;&#x7684;&#x5373;&#x53EF;</strong></p>
+<pre><code class="lang-shell">[root@mysql-db03 rpm]# rpm -ivh Atlas-2.2.1.el6.x86_64.rpm
+Preparing... ########################################### [100%] 
+    package Atlas-2.2.1-1.x86_64 is already installed
+</code></pre>
+<h2 id="95-&#x914D;&#x7F6E;atlas">9.5 &#x914D;&#x7F6E;Atlas</h2>
+<blockquote>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x7528;vim&#x6253;&#x5F00;/usr/local/mysql-proxy/conf&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x60CA;&#x559C;&#x7684;&#x53D1;&#x73B0;&#xFF0C;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7B80;&#x76F4;&#x592A;&#x7B80;&#x5355;&#x4E86;&#x3002;</p>
+</blockquote>
+<p><strong>&#xFF08;1&#xFF09;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC;&#x9700;&#x8981;&#x505A;&#x5982;&#x4E0B;&#x4FEE;&#x6539;&#xFF1A;</strong></p>
+<pre><code class="lang-shell">#&#x9700;&#x8981;&#x4FEE;&#x6539;&#x7684;&#x5185;&#x5BB9;&#x4E00;&#x89C8;&#xFF1A;
+[root@mysql-db03 ~]# cat -n /usr/local/mysql-proxy/conf/test.cnf.bak | egrep -w &quot;12|15|18|30|36|45|48&quot; 
+12 proxy-backend-addresses = 127.0.0.1:3306 
+15 #proxy-read-only-backend-addresses = 127.0.0.1:3305@1 
+18 pwds = user1:+jKsgB3YAG8=, user2:GS+tr4TPgqc= 
+30 log-level = message 
+36 #sql-log = OFF 
+45 proxy-address = 0.0.0.0:1234 
+48 admin-address = 0.0.0.0:2345
+
+#&#x5C06;&#x4E0A;&#x8FB9;&#x5185;&#x5BB9;&#x4FEE;&#x6539;&#x4E3A;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;
+[root@mysql-db03 ~]# cat -n /usr/local/mysql-proxy/conf/test.cnf | egrep -w &quot;12|15|18|30|36|45|48&quot; 
+12 proxy-backend-addresses = 192.168.0.60:3307 #&#x8FD9;&#x91CC;&#x6DFB;&#x52A0;VIP&#x5730;&#x5740; 
+15 proxy-read-only-backend-addresses = 192.168.0.51:3307@1,192.168.0.53:3307@1 #&#x4ECE;&#x5E93;&#x5730;&#x5740; 
+18 pwds = root:++gAN07C/Q0=,mha:++gAN07C/Q0= #MySQL&#x6388;&#x6743;&#x7528;&#x6237;&#x8D26;&#x53F7;&#x5BC6;&#x7801;&#xFF08;&#x5BC6;&#x7801;&#x8981;&#x52A0;&#x5BC6;&#xFF09; 
+30 log-level = error #&#x65E5;&#x5FD7;&#x7EA7;&#x522B; 
+36 sql-log = ON #&#x6253;&#x5F00;&#x65E5;&#x5FD7; 
+45 proxy-address = 192.168.0.53:3306 #Atlas&#x7684;&#x5DE5;&#x4F5C;&#x76D1;&#x542C;&#x7AEF;&#x53E3;&#xFF08;&#x63D0;&#x4F9B;&#x4EE3;&#x7406;&#x670D;&#x52A1;&#xFF09; 
+48 admin-address = 192.168.0.53:1234 #Atlas&#x7684;&#x7BA1;&#x7406;&#x76D1;&#x542C;&#x7AEF;&#x53E3;
+
+
+&gt; &#x63D0;&#x793A;&#xFF1A;
+&gt; &#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7684;&#x4E3B;&#x4ECE;&#x6570;&#x636E;&#x5E93;&#x7684;&#x9ED8;&#x8BA4;3306&#x7AEF;&#x53E3;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x6210;3307
+&gt; &#x7B2C;18&#x884C;&#x4E3A;&#x767B;&#x9646;MySQL&#x7684;&#x6388;&#x6743;&#x8D26;&#x53F7;&#x4FE1;&#x606F;&#xFF0C;&#x5176;&#x4E2D;&#x5BC6;&#x7801;&#x9700;&#x8981;&#x52A0;&#x5BC6;&#xFF08;&#x901A;&#x8FC7;/usr/local/mysql-proxy/bin/encrypt&#x52A0;&#x5BC6;&#x5DE5;&#x5177;&#x6765;&#x52A0;&#x5BC6;&#xFF09;
+</code></pre>
+<p><strong>&#xFF08;2&#xFF09;&#x4FEE;&#x6539;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x4E3A;3307</strong></p>
+<pre><code class="lang-shell">#&#x5148;&#x6740;&#x6389;mha&#x7BA1;&#x7406;&#x8FDB;&#x7A0B; 
+[root@mysql-db03 conf]# ps -ef | grep mha | grep -v grep
+root 15697 1 0 Sep05 ? 00:00:09 perl /usr/bin/masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover
+[root@mysql-db03 conf]# kill -9 15697
+[root@mysql-db03 conf]# ps -ef | grep mha | grep -v grep
+
+#&#x4FEE;&#x6539;mysql-db01,mysql-db02,mysql-db03&#x4E0A;&#x7684;MySQL&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x4E3A;3307
+[root@mysql-db03 conf]# sed -n &apos;13p&apos; /etc/my.cnfport = 3307
+[root@mysql-db02 conf]# sed -n &apos;13p&apos; /etc/my.cnfport = 3307
+[root@mysql-db01 conf]# sed -n &apos;13p&apos; /etc/my.cnfport = 3307
+</code></pre>
+<p><strong>&#xFF08;3&#xFF09;&#x91CD;&#x542F;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#x7684;&#x670D;&#x52A1;</strong></p>
+<p>&#x8FC7;&#x7A0B;&#x7565;</p>
+<p><strong>&#xFF08;4&#xFF09;&#x5C06;&#x4ECE;&#x5E93;mysql-db01&#x548C;mysql-db03&#x6307;&#x5411;&#x4E3B;&#x5E93;mysql-db02&#x8FDB;&#x884C;&#x540C;&#x6B65;</strong></p>
+<pre><code class="lang-mysql">#mysql-db01&#x548C;mysql-db03&#x7684;&#x64CD;&#x4F5C;&#x6B65;&#x9AA4;&#x76F8;&#x540C;
+mysql&gt; stop slave; #&#x505C;&#x6B62;&#x4ECE;&#x540C;&#x6B65;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; CHANGE MASTER TO MASTER_HOST=&apos;192.168.0.52&apos;, MASTER_PORT=3307, MASTER_AUTO_POSITION=1, MASTER_USER=&apos;rep&apos;, MASTER_PASSWORD=&apos;123123&apos;; #&#x6388;&#x6743;&#x540C;&#x6B65;&#x4FE1;&#x606F;
+Query OK, 0 rows affected, 2 warnings (0.01 sec)
+
+mysql&gt; start slave; #&#x5F00;&#x59CB;&#x540C;&#x6B65;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near &apos;slavee&apos; at line 1
+mysql&gt; start slave;
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql&gt; show slave status\G
+*************************** 1. row *************************** 
+Slave_IO_State: Waiting for master to send event 
+Master_Host: 192.168.0.52 
+Master_User: rep 
+Master_Port: 3307 
+Connect_Retry: 60 
+Master_Log_File: mysql-bin.000010 
+Read_Master_Log_Pos: 271 
+Relay_Log_File: mysql-db01-relay-bin.000002 
+Relay_Log_Pos: 361 
+Relay_Master_Log_File: mysql-bin.000010 
+Slave_IO_Running: Yes #&#x540C;&#x6B65;&#x6210;&#x529F; 
+Slave_SQL_Running: Yes #&#x540C;&#x6B65;&#x6210;&#x529F; 
+Replicate_Do_DB: 
+&#xB7;&#xB7;&#x4EE5;&#x4E0B;&#x7701;&#x7565;&#x82E5;&#x5E72;&#x884C;&#xB7;&#xB7;
+</code></pre>
+<p><strong>&#xFF08;5&#xFF09;&#x4FEE;&#x6539;mha&#x914D;&#x7F6E;&#x6587;&#x4EF6;</strong></p>
+<pre><code class="lang-shell">[server default]
+manager_log=/var/log/mha/mha1/manager
+manager_workdir=/var/log/mha/mha1
+master_binlog_dir=/usr/local/mysql/data
+master_ip_failover_script=/usr/local/bin/master_ip_failover
+password=123123
+ping_interval=2
+repl_password=123123
+repl_user=rep
+ssh_user=root
+user=mha
+
+[server1]
+hostname=192.168.0.51
+port=3307 #&#x4FEE;&#x6539;&#x7AEF;&#x53E3;&#x53F7;
+
+[server2]
+hostname=192.168.0.52
+port=3307 #&#x4FEE;&#x6539;&#x7AEF;&#x53E3;&#x53F7;
+
+[server3]
+hostname=192.168.0.53
+port=3307 #&#x4FEE;&#x6539;&#x7AEF;&#x53E3;&#x53F7;
+
+[binlog1]
+no_master=1
+hostname=192.168.0.53
+master_binlog_dir=/data/mysql/binlog/
+</code></pre>
+<p><strong>&#xFF08;6&#xFF09;&#x542F;&#x52A8;mysqlbinlog&#x65E5;&#x5FD7;&#x5907;&#x4EFD;&#x7684;&#x8FDB;&#x7A0B;</strong></p>
+<pre><code class="lang-shell">[root@mysql-db03 binlog]# ps -ef | grep mysqlbinlog | grep -v grep
+[root@mysql-db03 binlog]# mysqlbinlog -R --host=192.168.0.52 --port=3307 --user=mha --password=123123 --raw --stop-never mysql-bin.000001 &amp;
+[1] 24880
+[root@mysql-db03 binlog]# ps -ef | grep mysqlbinlog | grep -v grep
+root 24880 22198 0 01:38 pts/1 00:00:00 mysqlbinlog -R --host=192.168.0.52 --port=3307 --user=mha --password=x xxxx --raw --stop-never mysql-bin.000001
+</code></pre>
+<p><strong>&#xFF08;7&#xFF09;&#x542F;&#x52A8;mha&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;</strong></p>
+<pre><code class="lang-shell">[root@mysql-db03 conf]# ps -ef | grep perl | grep -v grep
+[root@mysql-db03 conf]# nohup masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover &lt; /dev/null &gt; /var/log/mha/mha1/manager.log 2&gt;&amp;1 &amp;
+[1] 24895
+[root@mysql-db03 conf]# ps -ef | grep perl | grep -v grep
+root 24895 17795 3 01:41 pts/0 00:00:00 perl /usr/bin/masterha_manager --conf=/etc/mha/mha1.cnf --remove_dead_master_conf --ignore_last_failover
+</code></pre>
+<p><strong>&#xFF08;8&#xFF09;&#x542F;&#x52A8;Atlas&#x670D;&#x52A1;</strong></p>
+<pre><code class="lang-shell">[root@mysql-db03 conf]# /usr/local/mysql-proxy/bin/mysql-proxyd test start
+OK: MySQL-Proxy of test is started
+[root@mysql-db03 conf]# ps -ef | grep mysql-proxy | grep -v grep
+root 25005 1 0 01:43 ? 00:00:00 /usr/local/mysql-proxy/bin/mysql-proxy --defaults-file=/usr/local/mysql-proxy/conf/test.cnfroot 25006 25005 0 01:43 ? 00:00:00 /usr/local/mysql-proxy/bin/mysql-proxy --defaults-file=/usr/local/mysql-proxy/conf/test.cnf
+
+#&#x8BF4;&#x660E;&#xFF1A;
+#&#x4E3A;&#x4F55;&#x542F;&#x52A8;&#x670D;&#x52A1;&#x9700;&#x8981;&#x52A0;test&#xFF0C;&#x56E0;&#x4E3A;&#x5728;Atlas&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x5B9E;&#x4F8B;&#x540D;&#x5B57;&#x4E3A;test
+#Atlas&#x5B9E;&#x9645;&#x662F;&#x542F;&#x52A8;&#x4E86;&#x67D0;&#x4E2A;&#x5B9E;&#x4F8B;&#xFF08;&#x5F53;&#x7136;&#x4E5F;&#x53EF;&#x4EE5;&#x591A;&#x5B9E;&#x4F8B;&#xFF09;
+
+[root@mysql-db03 conf]# netstat -antup | grep mysql-proxy
+tcp 0 0 0.0.0.0:1234 0.0.0.0:* LISTEN 25006/mysql-proxy
+tcp 0 0 0.0.0.0:3306 0.0.0.0:* LISTEN 25006/mysql-proxy
+
+#&#x8BF4;&#x660E;&#xFF1A;
+#&#x76D1;&#x542C;3306&#x7684;&#x4E3A;Atlas&#x5BF9;&#x5916;&#x63D0;&#x4F9B;&#x4EE3;&#x7406;&#x7684;&#x7AEF;&#x53E3;&#xFF1B;&#x76D1;&#x542C;1234&#x662F;Atlas&#x7684;&#x7BA1;&#x7406;&#x76D1;&#x542C;&#x7AEF;&#x53E3;
+</code></pre>
+<h2 id="96-&#x767B;&#x9646;atlas&#x7BA1;&#x7406;&#x7AEF;&#x53E3;">9.6 &#x767B;&#x9646;Atlas&#x7BA1;&#x7406;&#x7AEF;&#x53E3;</h2>
+<pre><code class="lang-shell">[root@mysql-db03 conf]# mysql -uuser -ppwd -P1234 -h 192.168.0.53 #&#x767B;&#x9646;Atlas&#x7BA1;&#x7406;&#x7AEF;
+Warning: Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor. Commands end with ; or \g.
+Your MySQL connection id is 1
+Server version: 5.0.99-agent-admin
+
+Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or itsaffiliates. Other names may be trademarks of their respectiveowners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; show databases; #&#x770B;&#x6240;&#x6709;&#x5E93;&#xFF0C;&#x62A5;&#x9519;&#xFF0C;&#x5E76;&#x4E0D;&#x8BA9;&#x770B;
+ERROR 1105 (07000): use &apos;SELECT * FROM help&apos; to see the supported commandsmysql&gt; select * from help&#xFF1B; #&#x6309;&#x63D0;&#x793A;&#x8F93;&#x5165;&#x547D;&#x4EE4;
++----------------------------+---------------------------------------------------------+| command | description |
++----------------------------+---------------------------------------------------------+| SELECT * FROM help | shows this help |
+| SELECT * FROM backends | lists the backends and their state |
+| SET OFFLINE $backend_id | offline backend server, $backend_id is backend_ndxs id |
+| SET ONLINE $backend_id | online backend server, ... |
+| ADD MASTER $backend | example: &quot;add master 127.0.0.1:3306&quot;, ... |
+| ADD SLAVE $backend | example: &quot;add slave 127.0.0.1:3306&quot;, ... |
+| REMOVE BACKEND $backend_id | example: &quot;remove backend 1&quot;, ... |
+| SELECT * FROM clients | lists the clients |
+| ADD CLIENT $client | example: &quot;add client 192.168.1.2&quot;, ... |
+| REMOVE CLIENT $client | example: &quot;remove client 192.168.1.2&quot;, ... |
+| SELECT * FROM pwds | lists the pwds |
+| ADD PWD $pwd | example: &quot;add pwd user:raw_password&quot;, ... |
+| ADD ENPWD $pwd | example: &quot;add enpwd user:encrypted_password&quot;, ... |
+| REMOVE PWD $pwd | example: &quot;remove pwd user&quot;, ... |
+| SAVE CONFIG | save the backends to config file |
+| SELECT VERSION | display the version of Atlas |
++----------------------------+---------------------------------------------------------+
+16 rows in set (0.00 sec)
+
+mysql&gt; select * from backends&#xFF1B; #&#x8F93;&#x5165;&#x4E0A;&#x8FB9;&#x5217;&#x8868;&#x91CC;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x51FA;&#x73B0;&#x4E0B;&#x8868;
++-------------+-------------------+-------+------+
+| backend_ndx | address | state | type |
++-------------+-------------------+-------+------+
+| 1 | 192.168.0.60:3307 | up | rw |
+| 2 | 192.168.0.51:3307 | up | ro |
+| 3 | 192.168.0.53:3307 | up | ro |
++-------------+-------------------+-------+------+
+3 rows in set (0.00 sec)
+</code></pre>
+<blockquote>
+<p>&#x8FD9;&#x91CC;&#x662F;&#x5E73;&#x6ED1;&#x7BA1;&#x7406;&#x754C;&#x9762;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x6839;&#x636E;&#x9009;&#x9879;&#x4FEE;&#x6539;&#x8BBE;&#x7F6E;</p>
+</blockquote>
+<h2 id="97-&#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x53CA;&#x8BFB;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6D4B;&#x8BD5;">9.7 &#x8FDB;&#x884C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x53CA;&#x8BFB;&#x8D1F;&#x8F7D;&#x5747;&#x8861;&#x6D4B;&#x8BD5;</h2>
+<p>&#xFF08;1&#xFF09;&#x5728;mysql-db01&#x548C;mysql-db03&#x4E0A;&#x7684;&#x672C;&#x5730;MySQL&#xFF08;3307&#x7AEF;&#x53E3;&#xFF09;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E93;</p>
+<pre><code class="lang-shell">#&#x5728;mysql-db03&#x4E0A;&#x7684;&#x672C;&#x5730;3307&#x7AEF;&#x53E3;&#x7684;&#x6570;&#x636E;&#x5E93;&#x91CC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E93;
+[root@mysql-db03 binlog]# mysql -uroot -p123123 -P3307 #&#x767B;&#x9646;&#x672C;&#x5730;MySQL
+Warning: Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor. Commands end with ; or \g.
+Your MySQL connection id is 30
+Server version: 5.6.17-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or itsaffiliates. Other names may be trademarks of their respectiveowners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; show databases;
++--------------------+
+| Database |
++--------------------+
+| information_schema |
+| benet |
+| mysql |
+| performance_schema |
+| test |
+| yunjisuan |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql&gt; create database db03; #&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E93;db03
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; show databases;
++--------------------+
+| Database |
++--------------------+
+| information_schema |
+| benet |
+| db03 |
+| mysql |
+| performance_schema |
+| test |
+| yunjisuan |
++--------------------+
+7 rows in set (0.00 sec)
+
+#&#x5728;mysql-db01&#x4E0A;&#x7684;&#x672C;&#x5730;3307&#x7AEF;&#x53E3;&#x7684;&#x6570;&#x636E;&#x5E93;&#x91CC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5E93;
+[root@mysql-db01 ~]# mysql -uroot -p123123 -P3307
+Warning: Using a password on the command line interface can be insecure.Welcome to the MySQL monitor. Commands end with ; or \g.Your MySQL connection id is 37Server version: 5.6.17-log MySQL Community Server (GPL)Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.Oracle is a registered trademark of Oracle Corporation and/or itsaffiliates. Other names may be trademarks of their respectiveowners.Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.mysql&gt; show databases;+--------------------+
+| Database |
++--------------------+
+| information_schema |
+| benet |
+| mysql |
+| performance_schema |
+| test |
+| yunjisuan |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql&gt; create database db01;
+Query OK, 1 row affected (0.00 sec)
+
+mysql&gt; show databases;
++--------------------+
+| Database |
++--------------------+
+| information_schema |
+| benet |
+| db01 |
+| mysql |
+| performance_schema |
+| test |
+| yunjisuan |
++--------------------+
+7 rows in set (0.00 sec)
+</code></pre>
+<p>&#xFF08;2&#xFF09;&#x767B;&#x9646;mysql-db02&#xFF08;&#x4E3B;&#x5E93;&#xFF09;&#x8FDB;&#x884C;&#x67E5;&#x770B;</p>
+<pre><code class="lang-shell">[root@mysql-db02 ~]# mysql -uroot -p123123 -P3307
+Warning: Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor. Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 5.6.17-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or itsaffiliates. Other names may be trademarks of their respectiveowners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; show databases;
++--------------------+
+| Database |
++--------------------+
+| information_schema |
+| benet |
+| mysql | #&#x4E3B;&#x5E93;192.168.0.52&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;db01&#x6216;db03
+| performance_schema |
+| test |
+| yunjisuan |
++--------------------+
+6 rows in set (0.00 sec)
+</code></pre>
+<p>3&#xFF09;&#x5728;mysql-db03&#x7684;&#x672C;&#x5730;&#x767B;&#x9646;Atlas&#x4EE3;&#x7406;&#x7684;3306&#x7AEF;&#x53E3;</p>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# mysql -uroot -p123123 -h 192.168.0.53
+</code></pre>
+<p><img src="images/13.png" alt=""></p>
+<blockquote>
+<p>&#x7531;&#x6B64;&#x53EF;&#x89C1;&#xFF0C;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x8BFB;&#x8D1F;&#x8F7D;&#x5747;&#x8861;</p>
+</blockquote>
+<p>&#xFF08;4&#xFF09;&#x6211;&#x4EEC;&#x5728;mysql-db03&#x7684;Atlas&#x4EE3;&#x7406;&#x7684;MySQL&#x670D;&#x52A1;&#x7AEF;&#x53E3;&#x91CC;&#x8FDB;&#x884C;&#x5199;&#x5165;&#x64CD;&#x4F5C;&#xFF0C;&#x6D4B;&#x8BD5;&#x8BFB;&#x5199;&#x5206;&#x79BB;</p>
+<pre><code class="lang-shell">[root@mysql-db03 ~]# mysql -uroot -p123123 -h 192.168.0.53
+</code></pre>
+<p><img src="images/14.png" alt=""></p>
+<blockquote>
+<p>&#x7531;&#x6B64;&#x53EF;&#x89C1;&#xFF0C;mysql-db01&#x548C;mysql-db3&#x7684;&#x5E93;&#x91CC;&#x90FD;&#x51FA;&#x73B0;&#x4E86;test20170910&#x7684;&#x5E93;&#x3002;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x53EF;&#x80FD;&#xFF0C;&#x6570;&#x636E;&#x662F;&#x88AB;&#x5199;&#x5165;&#x4E86;&#x4E3B;&#x5E93;192.168.0.52&#x91CC;&#xFF0C;&#x7136;&#x540E;&#x540C;&#x6B65;&#x5230;&#x7684;&#x4ECE;&#x5E93;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8BFB;&#x5199;&#x5206;&#x79BB;&#x6D4B;&#x8BD5;&#x5B8C;&#x6BD5;&#x3002;</p>
+</blockquote>
+
+                    
+                    </section>
+                
+                
+                </div>
+            </div>
+        </div>
+
+        
+        <a href="../Mha-Atlas-MySQL/8.配置binlog-server备份服务器.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 8.配置binlog-server备份服务器"><i class="fa fa-angle-left"></i></a>
+        
+        
+    </div>
+</div>
+ 
+<script src="../gitbook/app-min.js"></script>
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/jquery-2.1.1.min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/underscore-min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/sequence-diagram-min.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-js-sequence-diagram/plugin.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-fontsettings/fontsettings.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-toggle-chapters/toggle.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-splitter/splitter.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-theme-comscore/test.js"></script>
+    
+
+    
+    <script src="../gitbook/plugins/gitbook-plugin-livereload/plugin.js"></script>
+    
+
+<script>
+require(["gitbook"], function(gitbook) {
+    var config = {"sequence-diagrams":{"theme":"simple"},"js-sequence-diagram":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"toggle-chapters":{},"splitter":{},"theme-comscore":{},"livereload":{}};
+    gitbook.start(config);
+});
+</script>
+ <!-- body:end -->
+<!-- body:end -->
+    <div class="footer">yangxiaoqi </div>
+    
+</body>
+<!-- End of book MyBook -->
+<!-- End of book MyBook -->
+
+
+</html>
