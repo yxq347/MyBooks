@@ -354,36 +354,35 @@
 <h2 id="12-&#x8F6F;&#x4EF6;&#x5305;">1.2 &#x8F6F;&#x4EF6;&#x5305;</h2>
 <h3 id="1-mha&#x7BA1;&#x7406;&#x8282;&#x70B9;&#x5B89;&#x88C5;&#x5305;">1) mha&#x7BA1;&#x7406;&#x8282;&#x70B9;&#x5B89;&#x88C5;&#x5305;</h3>
 <p>mha4mysql-manager-0.58-0.el7.centos.noarch.rpm</p>
-<p>mha4mysql-manager-0.56.tar.gz</p>
+<p>mha4mysql-manager-0.58.tar.gz</p>
 <h3 id="2-mha-node&#x8282;&#x70B9;&#x5B89;&#x88C5;&#x5305;">2) mha node&#x8282;&#x70B9;&#x5B89;&#x88C5;&#x5305;</h3>
-<p>mha4mysql-node-0.56-0.el6.noarch.rpm</p>
-<p>mha4mysql-node-0.56.tar.gz</p>
+<p>mha4mysql-node-0.58-0.el7.centos.noarch.rpm</p>
+<p>mha4mysql-node-0.58.tar.gz</p>
 <h3 id="3-mysql&#x4E2D;&#x95F4;&#x4EF6;">3) mysql&#x4E2D;&#x95F4;&#x4EF6;</h3>
 <p>Atlas-2.2.1.el6.x86_64.rpm</p>
 <h3 id="4-mysql&#x6E90;&#x7801;&#x5B89;&#x88C5;&#x5305;">4) mysql&#x6E90;&#x7801;&#x5B89;&#x88C5;&#x5305;</h3>
-<p>mysql-5.6.17-linux-glibc2.5-x86_64.tar</p>
+<p>mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz</p>
 <h2 id="13-&#x4E3B;&#x673A;&#x540D;&#x6620;&#x5C04;">1.3 &#x4E3B;&#x673A;&#x540D;&#x6620;&#x5C04;</h2>
 <pre><code class="lang-shell">[root@mysql-db01 ~]# cat /etc/hosts
-127.0.0.1 localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1 localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.0.51 mysql-db01
-192.168.0.52 mysql-db02
-192.168.0.53 mysql-db03
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+192.168.244.136    mysql-db01
+192.168.244.137 mysql-db02
+192.168.244.138 mysql-db03
 </code></pre>
-<h2 id="14-&#x5173;&#x95ED;selinux&#x548C;iptables">1.4 &#x5173;&#x95ED;selinux&#x548C;iptables</h2>
+<h2 id="14-&#x5173;&#x95ED;selinux&#x548C;firewalld">1.4 &#x5173;&#x95ED;selinux&#x548C;firewalld</h2>
 <pre><code class="lang-shell">[root@mysql-db01 ~]# vim /etc/sysconfig/selinux
 [root@mysql-db01 ~]# cat /etc/sysconfig/selinux | grep -v &quot;#&quot;
 SELINUX=disabled
 SELINUXTYPE=targeted
 [root@mysql-db01 ~]# setenforce 0
-[root@mysql-db01 ~]# service iptables stop
-iptables: Setting chains to policy ACCEPT: filter [ OK ]
-iptables: Flushing firewall rules: [ OK ]
-iptables: Unloading modules: [ OK ]
-[root@mysql-db01 ~]# chkconfig iptables off
+[root@mysql-db03 ~]# systemctl stop firewalld.service
+[root@mysql-db01 ~]# systemctl disable firewalld.service
+Removed symlink /etc/systemd/system/multi-user.target.wants/firewalld.service.
+Removed symlink /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service.
 </code></pre>
 <footer class="page-footer"><span class="copyright">powered by Gitbook</span><span class="footer-modification">File Modify: 
-2019-03-06 15:07:12
+2019-03-07 11:12:10
 </span></footer>
                                 
                                 </section>
@@ -427,7 +426,7 @@ iptables: Unloading modules: [ OK ]
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.mysql-mha环境准备","level":"1.2.1","depth":2,"next":{"title":"2.mha简介","level":"1.2.2","depth":2,"path":"Mha-Atlas-MySQL/2.mha简介.md","ref":"Mha-Atlas-MySQL/2.mha简介.md","articles":[]},"previous":{"title":"Mha-Atlas-MySQL高可用方案实践","level":"1.2","depth":1,"path":"Mha-Atlas-MySQL/0.readme.md","ref":"Mha-Atlas-MySQL/0.readme.md","articles":[{"title":"1.mysql-mha环境准备","level":"1.2.1","depth":2,"path":"Mha-Atlas-MySQL/1.mysql-mha环境准备.md","ref":"Mha-Atlas-MySQL/1.mysql-mha环境准备.md","articles":[]},{"title":"2.mha简介","level":"1.2.2","depth":2,"path":"Mha-Atlas-MySQL/2.mha简介.md","ref":"Mha-Atlas-MySQL/2.mha简介.md","articles":[]},{"title":"3.mysql环境准备","level":"1.2.3","depth":2,"path":"Mha-Atlas-MySQL/3.mysql环境准备.md","ref":"Mha-Atlas-MySQL/3.mysql环境准备.md","articles":[]},{"title":"4.配置基于GTID的主从复制","level":"1.2.4","depth":2,"path":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","ref":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","articles":[]},{"title":"5.部署MHA","level":"1.2.5","depth":2,"path":"Mha-Atlas-MySQL/5.部署MHA.md","ref":"Mha-Atlas-MySQL/5.部署MHA.md","articles":[]},{"title":"6.MHA参数验证实践","level":"1.2.6","depth":2,"path":"Mha-Atlas-MySQL/6.MHA参数验证实践.md","ref":"Mha-Atlas-MySQL/6.MHA参数验证实践.md","articles":[]},{"title":"7.配置VIP漂移","level":"1.2.7","depth":2,"path":"Mha-Atlas-MySQL/7.配置VIP漂移.md","ref":"Mha-Atlas-MySQL/7.配置VIP漂移.md","articles":[]},{"title":"8.配置binlog-server备份服务器","level":"1.2.8","depth":2,"path":"Mha-Atlas-MySQL/8.配置binlog-server备份服务器.md","ref":"Mha-Atlas-MySQL/8.配置binlog-server备份服务器.md","articles":[]},{"title":"9.mysql中间件Atlas","level":"1.2.9","depth":2,"path":"Mha-Atlas-MySQL/9.mysql中间件Atlas.md","ref":"Mha-Atlas-MySQL/9.mysql中间件Atlas.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["lunr","sharing","js-sequence-diagram","fontsettings","highlight","toggle-chapters","splitter","katex","codeblock-filename","advanced-emoji","ace","emphasize","toggle-chapters","theme-comscore","local-pagefooter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"ace":{},"livereload":{},"splitter":{},"search":{},"js-sequence-diagram":{},"local-pagefooter":{},"sequence-diagrams":{"theme":"simple"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"katex":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"codeblock-filename":{},"theme-comscore":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"level_number":true,"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"collapsible_menu":true,"variables":{"theme":"theme-green","copyright":"yangxiaoqi"},"language":"zh-hans","links":{"gitbook":false,"sharing":{"all":false,"vk":false,"facebook":false,"twitter":false,"google":false,"weibo":false}},"gitbook":"*"},"file":{"path":"Mha-Atlas-MySQL/1.mysql-mha环境准备.md","mtime":"2019-03-06T07:07:12.974Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T07:14:12.374Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"1.mysql-mha环境准备","level":"1.2.1","depth":2,"next":{"title":"2.mha简介","level":"1.2.2","depth":2,"path":"Mha-Atlas-MySQL/2.mha简介.md","ref":"Mha-Atlas-MySQL/2.mha简介.md","articles":[]},"previous":{"title":"Mha-Atlas-MySQL高可用方案实践","level":"1.2","depth":1,"path":"Mha-Atlas-MySQL/0.readme.md","ref":"Mha-Atlas-MySQL/0.readme.md","articles":[{"title":"1.mysql-mha环境准备","level":"1.2.1","depth":2,"path":"Mha-Atlas-MySQL/1.mysql-mha环境准备.md","ref":"Mha-Atlas-MySQL/1.mysql-mha环境准备.md","articles":[]},{"title":"2.mha简介","level":"1.2.2","depth":2,"path":"Mha-Atlas-MySQL/2.mha简介.md","ref":"Mha-Atlas-MySQL/2.mha简介.md","articles":[]},{"title":"3.mysql环境准备","level":"1.2.3","depth":2,"path":"Mha-Atlas-MySQL/3.mysql环境准备.md","ref":"Mha-Atlas-MySQL/3.mysql环境准备.md","articles":[]},{"title":"4.配置基于GTID的主从复制","level":"1.2.4","depth":2,"path":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","ref":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","articles":[]},{"title":"5.部署MHA","level":"1.2.5","depth":2,"path":"Mha-Atlas-MySQL/5.部署MHA.md","ref":"Mha-Atlas-MySQL/5.部署MHA.md","articles":[]},{"title":"6.MHA参数验证实践","level":"1.2.6","depth":2,"path":"Mha-Atlas-MySQL/6.MHA参数验证实践.md","ref":"Mha-Atlas-MySQL/6.MHA参数验证实践.md","articles":[]},{"title":"7.配置VIP漂移","level":"1.2.7","depth":2,"path":"Mha-Atlas-MySQL/7.配置VIP漂移.md","ref":"Mha-Atlas-MySQL/7.配置VIP漂移.md","articles":[]},{"title":"8.配置binlog-server备份服务器","level":"1.2.8","depth":2,"path":"Mha-Atlas-MySQL/8.配置binlog-server备份服务器.md","ref":"Mha-Atlas-MySQL/8.配置binlog-server备份服务器.md","articles":[]},{"title":"9.mysql中间件Atlas","level":"1.2.9","depth":2,"path":"Mha-Atlas-MySQL/9.mysql中间件Atlas.md","ref":"Mha-Atlas-MySQL/9.mysql中间件Atlas.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["lunr","sharing","js-sequence-diagram","fontsettings","highlight","toggle-chapters","splitter","katex","codeblock-filename","advanced-emoji","ace","emphasize","toggle-chapters","theme-comscore","local-pagefooter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"ace":{},"livereload":{},"splitter":{},"search":{},"js-sequence-diagram":{},"local-pagefooter":{},"sequence-diagrams":{"theme":"simple"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"katex":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"codeblock-filename":{},"theme-comscore":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"level_number":true,"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"collapsible_menu":true,"variables":{"theme":"theme-green","copyright":"yangxiaoqi"},"language":"zh-hans","links":{"gitbook":false,"sharing":{"all":false,"vk":false,"facebook":false,"twitter":false,"google":false,"weibo":false}},"gitbook":"*"},"file":{"path":"Mha-Atlas-MySQL/1.mysql-mha环境准备.md","mtime":"2019-03-07T03:12:10.292Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-07T03:56:06.257Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

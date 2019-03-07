@@ -329,50 +329,55 @@
 <li>mysql-db01 </li>
 </ul>
 <pre><code class="lang-shell">#&#x7CFB;&#x7EDF;&#x7248;&#x672C;
-[root@mysql-db01 bin]# cat /etc/redhat-release
-CentOS release 6.5 (Final)
-[root@mysql-db01 bin]# uname -r
-2.6.32-431.el6.x86_64
-[root@mysql-db01 bin]# hostname -I
-192.168.0.51
+[root@mysql-db01 ~]# cat /etc/redhat-release 
+CentOS Linux release 7.6.1810 (Core) 
+[root@mysql-db01 ~]# uname -r
+3.10.0-957.1.3.el7.x86_64
+[root@mysql-db01 ~]# hostname -I
+192.168.244.136
 </code></pre>
 <ul>
 <li>mysql-db02 </li>
 </ul>
 <pre><code class="lang-shell">#&#x7CFB;&#x7EDF;&#x7248;&#x672C;
-[root@mysql-db02 ~]# cat /etc/redhat-release
-CentOS release 6.5 (Final)
+[root@mysql-db02 ~]# cat /etc/redhat-release 
+CentOS Linux release 7.6.1810 (Core) 
 [root@mysql-db02 ~]# uname -r
-2.6.32-431.el6.x86_64
+3.10.0-957.1.3.el7.x86_64
 [root@mysql-db02 ~]# hostname -I
-192.168.0.52
+192.168.244.137
 </code></pre>
 <ul>
 <li>mysql-db03 </li>
 </ul>
 <pre><code class="lang-shell">#&#x7CFB;&#x7EDF;&#x7248;&#x672C;
-[root@mysql-db03 ~]# cat /etc/redhat-release
-CentOS release 6.5 (Final)
-[root@mysql-db03 ~]# uname -r
-2.6.32-431.el6.x86_64
+[root@mysql-db03 ~]# cat /etc/redhat-release 
+CentOS Linux release 7.6.1810 (Core) 
+[root@mysql-db03 ~]# uname  -r
+3.10.0-957.1.3.el7.x86_64
 [root@mysql-db03 ~]# hostname -I
-192.168.0.53
+192.168.244.138
 </code></pre>
 <h2 id="32-&#x5B89;&#x88C5;mysql">3.2 &#x5B89;&#x88C5;mysql</h2>
 <h3 id="321-&#x5B89;&#x88C5;&#x5305;&#x51C6;&#x5907;">3.2.1 &#x5B89;&#x88C5;&#x5305;&#x51C6;&#x5907;</h3>
 <pre><code class="lang-shell">[root@mysql-db01 ~]# ls
-anaconda-ks.cfg                     mha4mysql-manager-0.56.tar.gz               rpminstall.log                      mha4mysql-node-0.56.tar.gz          install.log.syslog                   mysql-5.6.17-linux-glibc2.5-x86_64.tar.gz
-[root@mysql-db01 ~]# ll mysql-5.6.17-linux-glibc2.5-x86_64.tar.gz
--rw-r--r--. 1 root root 305102088 Sep 3 21:33 mysql-5.6.17-linux-glibc2.5-x86_64.tar.gz
+anaconda-ks.cfg                mha4mysql-node-0.58.tar.gz            mha4mysql-manager-0.58.tar.gz  mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
+[root@mysql-db01 ~]# ll mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
+-rw-r--r-- 1 root root 644862820 Mar  6 15:24 mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz
 </code></pre>
 <h3 id="322-&#x5B89;&#x88C5;&#xFF08;3&#x53F0;&#x90FD;&#x88C5;&#xFF09;">3.2.2 &#x5B89;&#x88C5;&#xFF08;3&#x53F0;&#x90FD;&#x88C5;&#xFF09;</h3>
 <pre><code class="lang-shell">[root@mysql-db01 ~]# yum -y install ncurses-devel
 [root@mysql-db01 ~]# yum -y install libaio
-[root@mysql-db01 ~]# tar xf mysql-5.6.17-linux-glibc2.5-x86_64.tar.gz -C /usr/local/
-[root@mysql-db01 ~]# ln -s /usr/local/mysql-5.6.17-linux-glibc2.5-x86_64 /usr/local/mysql
+[root@mysql-db01 ~]# tar xf mysql-5.7.25-linux-glibc2.12-x86_64.tar.gz -C /usr/local/
+[root@mysql-db01 ~]# ln -s /usr/local/mysql-5.7.25-linux-glibc2.12-x86_64 /usr/local/mysql
 [root@mysql-db01 ~]# useradd mysql -s /sbin/nologin -M
-[root@mysql-db01 ~]# /usr/local/mysql/scripts/mysql_install_db --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data/
-[root@mysql-db01 ~]# /bin/cp /usr/local/mysql/support-files/my-default.cnf /etc/my.cnf
+[root@mysql-db01 ~]# /usr/local/mysql/bin/mysqld  --initialize --user=mysql --basedir=/usr/local/mysql --datadir=/usr/local/mysql/data/   #&#x521D;&#x59CB;&#x5316;&#x6570;&#x636E;&#x5E93;
+2019-03-06T08:31:12.751242Z 1 [Note] A temporary password is generated for root@localhost: OSkfjFvd*1)B    #&#x521D;&#x59CB;&#x5BC6;&#x7801;
+[root@mysql-db01 ~]# vim /etc/profile
+PATH=/usr/local/mysql/bin:/usr/local/mysql/lib:$PATH
+export PATH
+export MYSQL_HOME=&quot;/usr/local/mysql&quot;
+export ms=&quot;/usr/local/mysql&quot;
 [root@mysql-db01 ~]# /bin/cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqld
 [root@mysql-db01 ~]# ln -s /usr/local/mysql/bin/* /usr/local/bin/
 [root@mysql-db01 ~]# which mysqladmin
@@ -385,11 +390,33 @@ mysqld 0:off 1:off 2:on 3:on 4:on 5:on 6:off
 [root@mysql-db01 ~]# /etc/init.d/mysqld start
 Starting MySQL. SUCCESS!
 </code></pre>
-<h3 id="324-&#x914D;&#x7F6E;&#x5BC6;&#x7801;">3.2.4 &#x914D;&#x7F6E;&#x5BC6;&#x7801;</h3>
-<pre><code class="lang-shell">[root@mysql-db01 ~]# mysqladmin -uroot password &apos;123123&apos;
+<h3 id="324-&#x91CD;&#x65B0;&#x914D;&#x7F6E;&#x5BC6;&#x7801;">3.2.4 &#x91CD;&#x65B0;&#x914D;&#x7F6E;&#x5BC6;&#x7801;</h3>
+<pre><code class="lang-shell">[root@mysql-db01 mysql]# /usr/local/mysql/bin/mysqld_safe  --user=mysql &amp;
+[1] 20921
+[root@mysql-db01 mysql]# Logging to &apos;/usr/local/mysql/data/mysql.err&apos;.
+2019-03-06T08:31:42.572026Z mysqld_safe Starting mysqld daemon with databases from /usr/local/mysql/data
+[root@mysql-db01 mysql]# mysql -uroot -p -S /usr/local/mysql/data/mysql.sock
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 2
+Server version: 5.7.25-log
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
+
+mysql&gt; SET PASSWORD = PASSWORD(&apos;123123&apos;);
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.00 sec)
 </code></pre>
 <footer class="page-footer"><span class="copyright">powered by Gitbook</span><span class="footer-modification">File Modify: 
-2019-03-06 14:53:03
+2019-03-07 11:05:34
 </span></footer>
                                 
                                 </section>
@@ -433,7 +460,7 @@ Starting MySQL. SUCCESS!
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3.mysql环境准备","level":"1.2.3","depth":2,"next":{"title":"4.配置基于GTID的主从复制","level":"1.2.4","depth":2,"path":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","ref":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","articles":[]},"previous":{"title":"2.mha简介","level":"1.2.2","depth":2,"path":"Mha-Atlas-MySQL/2.mha简介.md","ref":"Mha-Atlas-MySQL/2.mha简介.md","articles":[]},"dir":"ltr"},"config":{"plugins":["lunr","sharing","js-sequence-diagram","fontsettings","highlight","toggle-chapters","splitter","katex","codeblock-filename","advanced-emoji","ace","emphasize","toggle-chapters","theme-comscore","local-pagefooter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"ace":{},"livereload":{},"splitter":{},"search":{},"js-sequence-diagram":{},"local-pagefooter":{},"sequence-diagrams":{"theme":"simple"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"katex":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"codeblock-filename":{},"theme-comscore":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"level_number":true,"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"collapsible_menu":true,"variables":{"theme":"theme-green","copyright":"yangxiaoqi"},"language":"zh-hans","links":{"gitbook":false,"sharing":{"all":false,"vk":false,"facebook":false,"twitter":false,"google":false,"weibo":false}},"gitbook":"*"},"file":{"path":"Mha-Atlas-MySQL/3.mysql环境准备.md","mtime":"2019-03-06T06:53:03.517Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T07:14:12.374Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3.mysql环境准备","level":"1.2.3","depth":2,"next":{"title":"4.配置基于GTID的主从复制","level":"1.2.4","depth":2,"path":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","ref":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","articles":[]},"previous":{"title":"2.mha简介","level":"1.2.2","depth":2,"path":"Mha-Atlas-MySQL/2.mha简介.md","ref":"Mha-Atlas-MySQL/2.mha简介.md","articles":[]},"dir":"ltr"},"config":{"plugins":["lunr","sharing","js-sequence-diagram","fontsettings","highlight","toggle-chapters","splitter","katex","codeblock-filename","advanced-emoji","ace","emphasize","toggle-chapters","theme-comscore","local-pagefooter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"ace":{},"livereload":{},"splitter":{},"search":{},"js-sequence-diagram":{},"local-pagefooter":{},"sequence-diagrams":{"theme":"simple"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"katex":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"codeblock-filename":{},"theme-comscore":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"level_number":true,"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"collapsible_menu":true,"variables":{"theme":"theme-green","copyright":"yangxiaoqi"},"language":"zh-hans","links":{"gitbook":false,"sharing":{"all":false,"vk":false,"facebook":false,"twitter":false,"google":false,"weibo":false}},"gitbook":"*"},"file":{"path":"Mha-Atlas-MySQL/3.mysql环境准备.md","mtime":"2019-03-07T03:05:34.376Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-07T03:56:06.257Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

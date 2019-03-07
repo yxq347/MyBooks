@@ -335,30 +335,46 @@
 <pre><code class="lang-shell">#&#x4FEE;&#x6539;&#x4E3B;&#x5E93;&#x914D;&#x7F6E;&#x6587;&#x4EF6;/etc/my.cnf
 [root@mysql-db01 mysql]# cat /etc/my.cnf
 [client]
-socket = /usr/local/mysql/data/mysql.sock
-[mysqld]
-lower_case_table_names = 1
-default-storage-engine = InnoDB
-port = 3306
-datadir = /usr/local/mysql/data
-character-set-server = utf8
-socket = /usr/local/mysql/data/mysql.sock
+port             = 3306
+socket             = /usr/local/mysql/data/mysql.sock
 
-log_bin = mysql-bin #&#x5F00;&#x542F;binlog&#x65E5;&#x5FD7;
-server_id = 1 #&#x8BBE;&#x7F6E;server_id
+[mysql]
+no-auto-rehash
+
+[mysqld]
+user = mysql
+lower_case_table_names     = 1
+default-storage-engine     = InnoDB
+port             = 3306
+basedir         = /usr/local/mysql
+datadir         = /usr/local/mysql/data
+character-set-server     = utf8
+socket             = /usr/local/mysql/data/mysql.sock
+pid-file         = /usr/local/mysql/data/mysql.pid
+relay-log         = /usr/local/mysql/data/relay-bin
+relay-log-info-file     = /usr/local/mysql/data/relay-log.info
+
+#&#x5F00;&#x542F;binlog&#x65E5;&#x5FD7;
+log_bin         = mysql-bin
+#&#x8BBE;&#x7F6E;server_id
+server_id         = 1
 
 innodb_buffer_pool_size = 200M
-slave-parallel-workers = 8
-thread_cache_size = 600
-back_log = 600
-slave_net_timeout = 60
-max_binlog_size = 512M
-key_buffer_size = 8M
-query_cache_size = 64M
-join_buffer_size = 2M
-sort_buffer_size = 2M
-query_cache_type = 1
-thread_stack = 192K
+slave-parallel-workers     = 8
+thread_cache_size     = 600
+back_log         = 600
+slave_net_timeout     = 60
+max_binlog_size     = 512M
+key_buffer_size     = 8M
+query_cache_size     = 64M
+join_buffer_size     = 2M
+sort_buffer_size     = 2M
+query_cache_type     = 1
+thread_stack         = 192K
+
+[mysqld_safe]
+log-error         = /usr/local/mysql/data/mysql.err
+pid-file          = /usr/local/mysql/data/mysql.pid
 #&#x91CD;&#x542F;&#x52A8;MySQL&#x670D;&#x52A1;
 [root@mysql-db01 mysql]# /etc/init.d/mysqld restart
 Shutting down MySQL.. SUCCESS! 
@@ -366,51 +382,39 @@ Starting MySQL. SUCCESS!
 </code></pre>
 <h3 id="422--&#x767B;&#x9646;mysql&#x5220;&#x9664;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x7528;&#x6237;&#x5E76;&#x521B;&#x5EFA;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7528;&#x6237;">4.2.2  &#x767B;&#x9646;MySQL&#x5220;&#x9664;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x7528;&#x6237;&#x5E76;&#x521B;&#x5EFA;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7528;&#x6237;</h3>
 <h4 id="1&#xFF09;&#x5220;&#x9664;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x7528;&#x6237;"><strong>1&#xFF09;&#x5220;&#x9664;&#x4E0D;&#x5FC5;&#x8981;&#x7684;&#x7528;&#x6237;</strong></h4>
-<pre><code class="lang-mysql"> mysql&gt; select user,host from mysql.user;
- +------+------------+
- | user | host |
- +------+------------+
- | root | 127.0.0.1 |
- | root | ::1 |
- | | localhost |
- | root | localhost |
- | | mysql-db01 |
- | root | mysql-db01 |
- +------+------------+
- 6 rows in set (0.00 sec)
- mysql&gt; drop user root@&apos;127.0.0.1&apos;;
- Query OK, 0 rows affected (0.00 sec)
- mysql&gt; drop user root@&apos;::1&apos;;
- Query OK, 0 rows affected (0.00 sec)
- mysql&gt; drop user &apos; &apos;@&apos;localhost&apos;;Query OK, 0 rows affected (0.00 sec)mysql&gt; drop user &apos; &apos;@&apos;mysql-db01&apos;;
- Query OK, 0 rows affected (0.00 sec)
- mysql&gt; select user,host from mysql.user;
- +------+------------+
- | user | host |
- +------+------------+
- | root | localhost |
- | root | mysql-db01 |
- +------+------------+
- 2 rows in set (0.00 sec)
+<pre><code class="lang-mysql">mysql&gt; select user,host from mysql.user;
++---------------+-----------+
+| user          | host      |
++---------------+-----------+
+| mysql.session | localhost |
+| mysql.sys     | localhost |
+| root          | localhost |
++---------------+-----------+
+3 rows in set (0.00 sec)
 </code></pre>
 <h4 id="2&#xFF09;&#x521B;&#x5EFA;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7528;&#x6237;"><strong>2&#xFF09;&#x521B;&#x5EFA;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7528;&#x6237;</strong></h4>
-<pre><code class="lang-mysql">mysql&gt; grant replication slave on *.* to rep@&apos;192.168.0.%&apos; identified by &apos;123123&apos;;
-Query OK, 0 rows affected (0.00 sec)
+<pre><code class="lang-mysql">mysql&gt; grant replication slave on *.* to rep@&apos;192.168.244.%&apos; identified by &apos;123123&apos;;
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql&gt; flush privileges;
+Query OK, 0 rows affected (0.01 sec)
+
 mysql&gt; select user,host from mysql.user;
-+------+-------------+
-| user | host |
-+------+-------------+
-| rep | 192.168.0.% |
-| root | localhost |
-| root | mysql-db01 |
-+------+-------------+
-3 rows in set (0.00 sec)
-mysql&gt; show grants for rep@&apos;192.168.0.%&apos;;
-+--------------------------------------------------------------------------------------------------------------------------+
-| Grants for rep@192.168.0.% |
-+--------------------------------------------------------------------------------------------------------------------------+
-| GRANT REPLICATION SLAVE ON *.* TO &apos;rep&apos;@&apos;192.168.0.%&apos; IDENTIFIED BY PASSWORD &apos;*E56A114692FE0DE073F9A1DD68A00EEB9703F3F1&apos; |
-+--------------------------------------------------------------------------------------------------------------------------+
++---------------+---------------+
+| user          | host          |
++---------------+---------------+
+| rep           | 192.168.244.% |
+| mysql.session | localhost     |
+| mysql.sys     | localhost     |
+| root          | localhost     |
++---------------+---------------+
+4 rows in set (0.00 sec)
+mysql&gt; show grants for rep@&apos;192.168.244.%&apos;;
++---------------------------------------------------------+
+| Grants for rep@192.168.244.%                            |
++---------------------------------------------------------+
+| GRANT REPLICATION SLAVE ON *.* TO &apos;rep&apos;@&apos;192.168.244.%&apos; |
++---------------------------------------------------------+
 1 row in set (0.00 sec)
 </code></pre>
 <h2 id="43--&#x4ECE;&#x5E93;&#x64CD;&#x4F5C;mysql-db02&#x548C;mysql-db03">4.3  &#x4ECE;&#x5E93;&#x64CD;&#x4F5C;(mysql-db02&#x548C;mysql-db03)</h2>
@@ -419,30 +423,46 @@ mysql&gt; show grants for rep@&apos;192.168.0.%&apos;;
 #&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;server-id = 5&#x9009;&#x9879;
 [root@mysql-db02 ~]# cat /etc/my.cnf
 [client]
-socket = /usr/local/mysql/data/mysql.sock
-[mysqld]
-lower_case_table_names = 1
-default-storage-engine = InnoDB
-port = 3306
-datadir = /usr/local/mysql/data
-character-set-server = utf8
-socket = /usr/local/mysql/data/mysql.sock
+port             = 3306
+socket             = /usr/local/mysql/data/mysql.sock
 
-log_bin = mysql-bin #&#x4ECE;binlog&#x4E5F;&#x8981;&#x6253;&#x5F00;
-server_id = 5 #&#x4EC5;&#x9700;&#x4FEE;&#x6539;&#x6B64;&#x9879;
+[mysql]
+no-auto-rehash
+
+[mysqld]
+user = mysql
+lower_case_table_names     = 1
+default-storage-engine     = InnoDB
+port             = 3306
+basedir         = /usr/local/mysql
+datadir         = /usr/local/mysql/data
+character-set-server     = utf8
+socket             = /usr/local/mysql/data/mysql.sock
+pid-file         = /usr/local/mysql/data/mysql.pid
+relay-log         = /usr/local/mysql/data/relay-bin
+relay-log-info-file     = /usr/local/mysql/data/relay-log.info
+
+#&#x5F00;&#x542F;binlog&#x65E5;&#x5FD7;
+log_bin         = mysql-bin
+#&#x8BBE;&#x7F6E;server_id
+server_id         = 5
 
 innodb_buffer_pool_size = 200M
-slave-parallel-workers = 8
-thread_cache_size = 600
-back_log = 600
-slave_net_timeout = 60
-max_binlog_size = 512M
-key_buffer_size = 8M
-query_cache_size = 64M
-join_buffer_size = 2M
-sort_buffer_size = 2M
-query_cache_type = 1
-thread_stack = 192K
+slave-parallel-workers     = 8
+thread_cache_size     = 600
+back_log         = 600
+slave_net_timeout     = 60
+max_binlog_size     = 512M
+key_buffer_size     = 8M
+query_cache_size     = 64M
+join_buffer_size     = 2M
+sort_buffer_size     = 2M
+query_cache_type     = 1
+thread_stack         = 192K
+
+[mysqld_safe]
+log-error         = /usr/local/mysql/data/mysql.err
+pid-file          = /usr/local/mysql/data/mysql.pid
 [root@mysql-db02 ~]# /etc/init.d/mysqld restart #&#x91CD;&#x542F;mysql
 Shutting down MySQL.. SUCCESS! 
 Starting MySQL. SUCCESS!
@@ -452,30 +472,46 @@ Starting MySQL. SUCCESS!
 #&#x53EA;&#x9700;&#x8981;&#x4FEE;&#x6539;server-id = 10&#x9009;&#x9879;
 [root@mysql-db03 ~]# cat /etc/my.cnf
 [client]
-socket = /usr/local/mysql/data/mysql.sock
-[mysqld]
-lower_case_table_names = 1
-default-storage-engine = InnoDB
-port = 3306
-datadir = /usr/local/mysql/data
-character-set-server = utf8
-socket = /usr/local/mysql/data/mysql.sock
+port             = 3306
+socket             = /usr/local/mysql/data/mysql.sock
 
-log_bin = mysql-bin #&#x4ECE;binlog&#x4E5F;&#x8981;&#x6253;&#x5F00;
-server_id = 10 #&#x53EA;&#x9700;&#x4FEE;&#x6539;&#x6B64;&#x9879;
+[mysql]
+no-auto-rehash
+
+[mysqld]
+user = mysql
+lower_case_table_names     = 1
+default-storage-engine     = InnoDB
+port             = 3306
+basedir         = /usr/local/mysql
+datadir         = /usr/local/mysql/data
+character-set-server     = utf8
+socket             = /usr/local/mysql/data/mysql.sock
+pid-file         = /usr/local/mysql/data/mysql.pid
+relay-log         = /usr/local/mysql/data/relay-bin
+relay-log-info-file     = /usr/local/mysql/data/relay-log.info
+
+#&#x5F00;&#x542F;binlog&#x65E5;&#x5FD7;
+log_bin         = mysql-bin
+#&#x8BBE;&#x7F6E;server_id
+server_id         = 10
 
 innodb_buffer_pool_size = 200M
-slave-parallel-workers = 8
-thread_cache_size = 600
-back_log = 600
-slave_net_timeout = 60
-max_binlog_size = 512M
-key_buffer_size = 8M
-query_cache_size = 64M
-join_buffer_size = 2M
-sort_buffer_size = 2M
-query_cache_type = 1
-thread_stack = 192K
+slave-parallel-workers     = 8
+thread_cache_size     = 600
+back_log         = 600
+slave_net_timeout     = 60
+max_binlog_size     = 512M
+key_buffer_size     = 8M
+query_cache_size     = 64M
+join_buffer_size     = 2M
+sort_buffer_size     = 2M
+query_cache_type     = 1
+thread_stack         = 192K
+
+[mysqld_safe]
+log-error         = /usr/local/mysql/data/mysql.err
+pid-file          = /usr/local/mysql/data/mysql.pid
 [root@mysql-db03 ~]# /etc/init.d/mysqld restart #&#x91CD;&#x542F;mysql
 Shutting down MySQL.. SUCCESS! 
 Starting MySQL. SUCCESS!
@@ -491,16 +527,19 @@ Starting MySQL. SUCCESS!
 <h2 id="44-&#x5F00;&#x542F;gtid">4.4 &#x5F00;&#x542F;GTID</h2>
 <pre><code class="lang-mysql">#&#x6CA1;&#x5F00;&#x542F;&#x4E4B;&#x524D;&#x5148;&#x770B;&#x4E00;&#x4E0B;GTID&#x72B6;&#x6001;
 mysql&gt; show global variables like &apos;%gtid%&apos;;
-+--------------------------+-------+
-| Variable_name | Value |
-+--------------------------+-------+
-| enforce_gtid_consistency | OFF |
-| gtid_executed | |
-| gtid_mode | OFF |
-| gtid_owned | |
-| gtid_purged | |
-+--------------------------+-------+
-5 rows in set (0.00 sec)
++----------------------------------+-------+
+| Variable_name                    | Value |
++----------------------------------+-------+
+| binlog_gtid_simple_recovery      | ON    |
+| enforce_gtid_consistency         | OFF   |
+| gtid_executed                    |       |
+| gtid_executed_compression_period | 1000  |
+| gtid_mode                        | OFF   |
+| gtid_owned                       |       |
+| gtid_purged                      |       |
+| session_track_gtids              | OFF   |
++----------------------------------+-------+
+8 rows in set (0.01 sec)
 </code></pre>
 <p><strong>&#x7F16;&#x8F91;mysql&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF08;&#x4E3B;&#x5E93;&#x4ECE;&#x5E93;&#x90FD;&#x9700;&#x8981;&#x4FEE;&#x6539;&#xFF09;</strong></p>
 <p><img src="images/02.png" alt=""></p>
@@ -519,65 +558,112 @@ Shutting down MySQL.. SUCCESS!
 Starting MySQL. SUCCESS!
 </code></pre>
 <p><strong>&#x518D;&#x6B21;&#x67E5;&#x770B;GTID&#x72B6;&#x6001;</strong></p>
-<pre><code class="lang-shell">[root@mysql-db01 ~]# mysql -uroot -p123123
-Warning: Using a password on the command line interface can be insecure.
-Welcome to the MySQL monitor. Commands end with ; or \g.
-Your MySQL connection id is 1
-Server version: 5.6.17-log MySQL Community Server (GPL)
+<pre><code class="lang-shell">[root@mysql-db01 ~]# mysql -uroot -p123123 -S /usr/local/mysql/data/mysql.sock
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 3
+Server version: 5.7.25-log MySQL Community Server (GPL)
 
-Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
 
-Oracle is a registered trademark of Oracle Corporation and/or itsaffiliates. Other names may be trademarks of their respectiveowners.
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
 
 Type &apos;help;&apos; or &apos;\h&apos; for help. Type &apos;\c&apos; to clear the current input statement.
 
 mysql&gt; show global variables like &apos;%gtid%&apos;;
-+--------------------------+-------+
-| Variable_name | Value |
-+--------------------------+-------+
-| enforce_gtid_consistency | ON | #&#x6267;&#x884C;GTID&#x4E00;&#x81F4;
-| gtid_executed | |
-| gtid_mode | ON | #&#x5F00;&#x542F;GTID&#x6A21;&#x5757;
-| gtid_owned | |
-| gtid_purged | |
-+--------------------------+-------+
-5 rows in set (0.00 sec)
-mysql&gt;
++----------------------------------+-------+
+| Variable_name                    | Value |
++----------------------------------+-------+
+| binlog_gtid_simple_recovery      | ON    |
+| enforce_gtid_consistency         | ON    |   #&#x6267;&#x884C;GTID&#x4E00;&#x81F4;
+| gtid_executed                    |       |
+| gtid_executed_compression_period | 1000  |
+| gtid_mode                        | ON    |   #&#x5F00;&#x542F;GTID&#x6A21;&#x5757;
+| gtid_owned                       |       |
+| gtid_purged                      |       |
+| session_track_gtids              | OFF   |
++----------------------------------+-------+
+8 rows in set (0.00 sec)
 </code></pre>
 <blockquote>
 <p><strong>&#x518D;&#x6B21;&#x63D0;&#x793A;&#xFF1A;</strong> 
 &#x4E3B;&#x5E93;&#x4ECE;&#x5E93;&#x90FD;&#x5FC5;&#x987B;&#x8981;&#x5F00;&#x542F;GTID&#xFF0C;&#x5426;&#x5219;&#x5728;&#x505A;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x62A5;&#x9519;.</p>
 </blockquote>
 <h2 id="45--&#x914D;&#x7F6E;&#x4E3B;&#x4ECE;&#x590D;&#x5236;mysql-db02mysql-db03">4.5  &#x914D;&#x7F6E;&#x4E3B;&#x4ECE;&#x590D;&#x5236;(mysql-db02,mysql-db03)</h2>
-<pre><code class="lang-mysql">mysql&gt; change master to \ 
--&gt; master_host=&apos;192.168.0.51&apos;,\ #&#x4E3B;&#x5E93;IP 
--&gt; master_user=&apos;rep&apos;,\ #&#x4E3B;&#x5E93;&#x590D;&#x5236;&#x7528;&#x6237; 
--&gt; master_password=&apos;123123&apos;,\ #&#x4E3B;&#x5E93;&#x590D;&#x5236;&#x7528;&#x5BC6;&#x7801; 
--&gt; master_auto_position=1; #GTID&#x4F4D;&#x7F6E;&#x70B9;&#xFF08;&#x81EA;&#x52A8;&#x8FFD;&#x8E2A;&#x9700;&#x8981;&#x540C;&#x6B65;&#x7684;position&#xFF09;
-Query OK, 0 rows affected, 2 warnings (0.00 sec)
+<pre><code class="lang-mysql">mysql&gt; change master to\
+    -&gt; master_host=&apos;192.168.244.136&apos;,\  #&#x4E3B;&#x5E93;IP
+    -&gt; master_user=&apos;rep&apos;,\          #&#x4E3B;&#x5E93;&#x590D;&#x5236;&#x7528;&#x6237;
+    -&gt; master_password=&apos;123123&apos;,\   #&#x4E3B;&#x5E93;&#x590D;&#x5236;&#x7528;&#x5BC6;&#x7801;
+    -&gt; master_port=3306,\            #&#x4E3B;&#x5E93;&#x590D;&#x5236;&#x7AEF;&#x53E3;
+    -&gt; master_auto_position=1;      #GTID&#x4F4D;&#x7F6E;&#x70B9;&#xFF08;&#x81EA;&#x52A8;&#x8FFD;&#x8E2A;&#x9700;&#x8981;&#x540C;&#x6B65;&#x7684;position&#xFF09;
+Query OK, 0 rows affected, 2 warnings (0.16 sec)
 </code></pre>
 <h2 id="46--&#x5F00;&#x542F;&#x4ECE;&#x5E93;&#x7684;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x529F;&#x80FD;&#xFF08;mysql-db02mysql-db03&#xFF09;">4.6  &#x5F00;&#x542F;&#x4ECE;&#x5E93;&#x7684;&#x4E3B;&#x4ECE;&#x590D;&#x5236;&#x529F;&#x80FD;&#xFF08;mysql-db02,mysql-db03&#xFF09;</h2>
-<pre><code class="lang-mysql">mysql&gt; start slave; #&#x5F00;&#x542F;&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x529F;&#x80FD;
-Query OK, 0 rows affected, 1 warning (0.01 sec)
+<pre><code class="lang-mysql">mysql&gt; start slave;      #&#x5F00;&#x542F;&#x4E3B;&#x4ECE;&#x540C;&#x6B65;&#x529F;&#x80FD;
+Query OK, 0 rows affected (0.56 sec)
+
 mysql&gt; show slave status\G
-*************************** 1. row *************************** 
-Slave_IO_State: Waiting for master to send event 
-Master_Host: 192.168.0.51 
-Master_User: rep 
-Master_Port: 3306 
-Connect_Retry: 60 
-Master_Log_File: mysql-bin.000003 
-Read_Master_Log_Pos: 151 
-Relay_Log_File: mysql-db02-relay-bin.000002 
-Relay_Log_Pos: 361 
-Relay_Master_Log_File: mysql-bin.000003 
-Slave_IO_Running: Yes #&#x6B64;&#x9879;yes&#x4EE3;&#x8868;&#x6210;&#x529F; 
-Slave_SQL_Running: Yes #&#x6B64;&#x9879;yes&#x4EE3;&#x8868;&#x6210;&#x529F; 
-Replicate_Do_DB:  
-Replicate_Ignore_DB:  
-Replicate_Do_Table:  
-Replicate_Ignore_Table:  
-#....&#x4EE5;&#x4E0B;&#x7701;&#x7565;&#x82E5;&#x5E72;&#x884C;....
+*************************** 1. row ***************************
+               Slave_IO_State: Waiting for master to send event
+                  Master_Host: 192.168.244.136
+                  Master_User: rep
+                  Master_Port: 3306
+                Connect_Retry: 60
+              Master_Log_File: mysql-bin.000001
+          Read_Master_Log_Pos: 154
+               Relay_Log_File: relay-bin.000002
+                Relay_Log_Pos: 367
+        Relay_Master_Log_File: mysql-bin.000001
+             Slave_IO_Running: Yes    #&#x6B64;&#x9879;yes&#x4EE3;&#x8868;&#x6210;&#x529F;
+            Slave_SQL_Running: Yes    #&#x6B64;&#x9879;yes&#x4EE3;&#x8868;&#x6210;&#x529F;
+              Replicate_Do_DB: 
+          Replicate_Ignore_DB: 
+           Replicate_Do_Table: 
+       Replicate_Ignore_Table: 
+      Replicate_Wild_Do_Table: 
+  Replicate_Wild_Ignore_Table: 
+                   Last_Errno: 0
+                   Last_Error: 
+                 Skip_Counter: 0
+          Exec_Master_Log_Pos: 154
+              Relay_Log_Space: 568
+              Until_Condition: None
+               Until_Log_File: 
+                Until_Log_Pos: 0
+           Master_SSL_Allowed: No
+           Master_SSL_CA_File: 
+           Master_SSL_CA_Path: 
+              Master_SSL_Cert: 
+            Master_SSL_Cipher: 
+               Master_SSL_Key: 
+        Seconds_Behind_Master: 0
+Master_SSL_Verify_Server_Cert: No
+                Last_IO_Errno: 0
+                Last_IO_Error: 
+               Last_SQL_Errno: 0
+               Last_SQL_Error: 
+  Replicate_Ignore_Server_Ids: 
+             Master_Server_Id: 1
+                  Master_UUID: 3352bc4a-3fea-11e9-9ca2-000c29064fb5
+             Master_Info_File: /usr/local/mysql/data/master.info
+                    SQL_Delay: 0
+          SQL_Remaining_Delay: NULL
+      Slave_SQL_Running_State: Slave has read all relay log; waiting for more updates
+           Master_Retry_Count: 86400
+                  Master_Bind: 
+      Last_IO_Error_Timestamp: 
+     Last_SQL_Error_Timestamp: 
+               Master_SSL_Crl: 
+           Master_SSL_Crlpath: 
+           Retrieved_Gtid_Set: 
+            Executed_Gtid_Set: 
+                Auto_Position: 1
+         Replicate_Rewrite_DB: 
+                 Channel_Name: 
+           Master_TLS_Version: 
+1 row in set (0.00 sec)
 </code></pre>
 <blockquote>
 <p>&#x4E24;&#x4E2A;&#x4ECE;&#x5E93;mysql-db02&#x548C;mysql-db03&#x90FD;&#x6267;&#x884C;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#x3002;</p>
@@ -609,8 +695,7 @@ show global variables like &#x2018;%gtid%&#x2019;&#xFF1B;
 </code></pre>
 <h2 id="410--&#x4ECE;&#x5E93;&#x8BBE;&#x7F6E;&#xFF08;mysql-db02mysql-db03&#xFF09;">4.10  &#x4ECE;&#x5E93;&#x8BBE;&#x7F6E;&#xFF08;mysql-db02,mysql-db03&#xFF09;</h2>
 <pre><code class="lang-mysql">#&#x767B;&#x9646;&#x4ECE;&#x5E93;
-[root@mysql-db02 ~]# mysql -uroot -p123123
-
+[root@mysql-db02 ~]# mysql -uroot -p123123 -S /usr/local/mysql/data/mysql.sock
 #&#x4E34;&#x65F6;&#x7981;&#x7528;&#x81EA;&#x52A8;&#x5220;&#x9664;relay log&#x529F;&#x80FD;
 mysql&gt; set global relay_log_purge = 0;
 Query OK, 0 rows affected (0.00 sec)
@@ -630,7 +715,7 @@ Shutting down MySQL.. SUCCESS!
 Starting MySQL. SUCCESS!
 </code></pre>
 <footer class="page-footer"><span class="copyright">powered by Gitbook</span><span class="footer-modification">File Modify: 
-2019-03-04 17:28:02
+2019-03-07 11:30:17
 </span></footer>
                                 
                                 </section>
@@ -674,7 +759,7 @@ Starting MySQL. SUCCESS!
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.配置基于GTID的主从复制","level":"1.2.4","depth":2,"next":{"title":"5.部署MHA","level":"1.2.5","depth":2,"path":"Mha-Atlas-MySQL/5.部署MHA.md","ref":"Mha-Atlas-MySQL/5.部署MHA.md","articles":[]},"previous":{"title":"3.mysql环境准备","level":"1.2.3","depth":2,"path":"Mha-Atlas-MySQL/3.mysql环境准备.md","ref":"Mha-Atlas-MySQL/3.mysql环境准备.md","articles":[]},"dir":"ltr"},"config":{"plugins":["lunr","sharing","js-sequence-diagram","fontsettings","highlight","toggle-chapters","splitter","katex","codeblock-filename","advanced-emoji","ace","emphasize","toggle-chapters","theme-comscore","local-pagefooter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"ace":{},"livereload":{},"splitter":{},"search":{},"js-sequence-diagram":{},"local-pagefooter":{},"sequence-diagrams":{"theme":"simple"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"katex":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"codeblock-filename":{},"theme-comscore":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"level_number":true,"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"collapsible_menu":true,"variables":{"theme":"theme-green","copyright":"yangxiaoqi"},"language":"zh-hans","links":{"gitbook":false,"sharing":{"all":false,"vk":false,"facebook":false,"twitter":false,"google":false,"weibo":false}},"gitbook":"*"},"file":{"path":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","mtime":"2019-03-04T09:28:02.390Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-06T07:14:12.374Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.配置基于GTID的主从复制","level":"1.2.4","depth":2,"next":{"title":"5.部署MHA","level":"1.2.5","depth":2,"path":"Mha-Atlas-MySQL/5.部署MHA.md","ref":"Mha-Atlas-MySQL/5.部署MHA.md","articles":[]},"previous":{"title":"3.mysql环境准备","level":"1.2.3","depth":2,"path":"Mha-Atlas-MySQL/3.mysql环境准备.md","ref":"Mha-Atlas-MySQL/3.mysql环境准备.md","articles":[]},"dir":"ltr"},"config":{"plugins":["lunr","sharing","js-sequence-diagram","fontsettings","highlight","toggle-chapters","splitter","katex","codeblock-filename","advanced-emoji","ace","emphasize","toggle-chapters","theme-comscore","local-pagefooter","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"emphasize":{},"ace":{},"livereload":{},"splitter":{},"search":{},"js-sequence-diagram":{},"local-pagefooter":{},"sequence-diagrams":{"theme":"simple"},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"katex":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"highlight":{},"codeblock-filename":{},"theme-comscore":{},"advanced-emoji":{"embedEmojis":false},"sharing":{"all":[],"facebook":false,"google":false,"instapaper":false,"twitter":false,"vk":false,"weibo":false},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"toggle-chapters":{}},"level_number":true,"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"collapsible_menu":true,"variables":{"theme":"theme-green","copyright":"yangxiaoqi"},"language":"zh-hans","links":{"gitbook":false,"sharing":{"all":false,"vk":false,"facebook":false,"twitter":false,"google":false,"weibo":false}},"gitbook":"*"},"file":{"path":"Mha-Atlas-MySQL/4.配置基于GTID的主从复制.md","mtime":"2019-03-07T03:30:17.821Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-07T03:56:06.257Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
