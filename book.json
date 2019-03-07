@@ -1,28 +1,31 @@
 {
+	"language": "zh-hans",
 	"variables": {
 		"theme": "theme-green",
 		"copyright": "yangxiaoqi"
 	},
 	"plugins": [
+		"lunr",
+    	"sharing",
 		"js-sequence-diagram",
 		"fontsettings",
 		"highlight",
 		"toggle-chapters",
 		"splitter",
-		"-katex",
-		"-codeblock-filename",
-		"-advanced-emoji",
-		"-ace",
-		"-search",
-		"-emphasize",
-		"-sharing", 
+		"katex",
+		"codeblock-filename",
+		"advanced-emoji",
+		"ace",
+		"emphasize", 
 		"toggle-chapters",
-		"theme-comscore"
+		"theme-comscore",
+		"local-pagefooter"
 	],
 	"pluginsConfig": {
 		"sequence-diagrams": {
 			"theme": "simple"
-		}
+		}  
+
 	},
 	"collapsible_menu": true,
 	"level_number": true,
